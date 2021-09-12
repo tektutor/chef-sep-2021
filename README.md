@@ -61,7 +61,6 @@ The expected output is
 ruby 3.0.2p107 (2021-07-07 revision 0db68f0233) [x86_64-linux]
 </pre>
 
-
 ### Setting up your Chef Workstation
 ```
 cd ~/Downloads
@@ -149,4 +148,40 @@ head -n1 /opt/opscode/version-manifest.txt
 The expected output is
 <pre>
 chef-server 14.9.23
+</pre>
+
+### Creating a chef-repo in Workstation
+```
+cd ~
+chef generate repo chef-repo
+```
+The expected output is
+
+<pre>
+[jegan@tektutor ~]$ <b>chef generate repo chef-repo</b>
++---------------------------------------------+
+            Chef License Acceptance
+
+Before you can continue, 3 product licenses
+must be accepted. View the license at
+https://www.chef.io/end-user-license-agreement/
+
+Licenses that need accepting:
+  * Chef Workstation
+  * Chef Infra Client
+  * Chef InSpec
+
+Do you accept the 3 product licenses (yes/no)?
+
+> yes
+
+Persisting 3 product licenses...
+✔ 3 product licenses persisted.
+
++---------------------------------------------+
+Generating Chef Infra repo chef-repo
+- Ensuring correct Chef Infra repo file content
+
+Your new Chef Infra repo is ready! Type `cd chef-repo` to enter it.
+[jegan@tektutor ~]$ 
 </pre>
