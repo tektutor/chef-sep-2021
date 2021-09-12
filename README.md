@@ -190,10 +190,13 @@ knife configure
 You need to type URL as https://server:443/tektutor and user as jegan.
 
 In chefserver, chefworkstation and nodes, we need to ensure the /etc/hosts file has the below entries
+```
 172.16.95.154   server
 172.16.95.157   workstation
 172.16.95.158   node1
 172.16.95.155   node2                      
+```
+
 The expected output is
 <pre>
 [jegan@workstation ~]$ <b>knife configure</b>
