@@ -109,3 +109,12 @@ Run 'chef-server-ctl reconfigure' to configure your Chef Infra Server
 
 For more information on getting started see https://docs.chef.io/server/
 </pre>
+
+Finding the Chef Server in your system
+```
+head -n1 /opt/opscode/version-manifest.txt
+```
+The expected output is
+<pre>
+chef-server 14.9.23
+</pre>
