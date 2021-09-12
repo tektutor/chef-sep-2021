@@ -22,3 +22,15 @@
 
 #### Chef Nodes
       - are the machines where software installations must be automated 
+      
+### Setting up your Chef Workstation
+```
+cd ~/Downloads
+wget https://packages.chef.io/files/stable/chefdk/4.13.3/el/8/chefdk-4.13.3-1.el7.x86_64.rpm
+sudo rpm -ivh ./chefdk-4.13.3-1.el7.x86_64.rpm
+chef -v
+```
+
+### Setting up your Chef Server
+```
+```
