@@ -70,7 +70,7 @@ chef -v
 ```
 The expected output is
 <pre>
-[jegan@tektutor Downloads]$ wget https://packages.chef.io/files/current/chef-workstation/21.9.613/el/8/chef-workstation-21.9.613-1.el8.x86_64.rpm
+[jegan@tektutor Downloads]$ wget https://packages.chef.io/files/cchef-server-ctl grant-server-admin-permissions jeganurrent/chef-workstation/21.9.613/el/8/chef-workstation-21.9.613-1.el8.x86_64.rpm
 --2021-09-12 01:45:12--  https://packages.chef.io/files/current/chef-workstation/21.9.613/el/8/chef-workstation-21.9.613-1.el8.x86_64.rpm
 Resolving packages.chef.io (packages.chef.io)... 151.101.158.110
 Connecting to packages.chef.io (packages.chef.io)|151.101.158.110|:443... connected.
@@ -176,6 +176,7 @@ run: redis_lb: (pid 20832) 120s; run: log: (pid 20831) 120s
 ### Create an admin user in Chef Server
 ```
 sudo chef-server-ctl user-create jegan Jeganathan Swaminathan jegan@tektutor.org 'admin@123' --filename /home/jegan/jegan.pem
+sudo chef-server-ctl grant-server-admin-permissions jegan
 ```
 We need to scp the jegan.pem file to the Chef workstation machine at /home/jegan/.chef/jegan.pem
 
