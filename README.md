@@ -9,9 +9,9 @@
 
 ### Chef Architecture
 - Has 3 Major Components
--   Workstation
--   Chef Server and
--   Chef Node(s)
+  - Workstation
+  - Chef Server and
+  - Chef Node(s)
 
 #### Chef Workstation
       - is the system where DevOps Engineers write Cookbooks to automate installations on the Chef Nodes
