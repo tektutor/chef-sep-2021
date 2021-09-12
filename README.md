@@ -178,6 +178,11 @@ run: redis_lb: (pid 20832) 120s; run: log: (pid 20831) 120s
 sudo chef-server-ctl user-create jegan Jeganathan Swaminathan jegan@tektutor.org 'Admin@123' --filename /home/jegan/jegan.pem
 ```
 
+### Create an organization and associate the admin user to the the organization
+```
+sudo chef-server-ctl org-create tektutor 'tektutor' --association_user jegan --filename tektutor-validator.pem
+```
+
 ### Creating a chef-repo in Workstation
 ```
 cd ~
