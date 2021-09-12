@@ -15,7 +15,7 @@
 
 #### Chef Workstation
       - is the system where DevOps Engineers write Cookbooks to automate installations on the Chef Nodes
-      - ChefDK tools are installed here
+      - Chef Workstation tools are installed here
 
 #### Chef Server
       - is the centralized Chef server where all the Cookbooks are kept
@@ -27,8 +27,8 @@
 ### Setting up your Chef Workstation
 ```
 cd ~/Downloads
-wget https://packages.chef.io/files/stable/chefdk/4.13.3/el/8/chefdk-4.13.3-1.el7.x86_64.rpm
-sudo rpm -ivh ./chefdk-4.13.3-1.el7.x86_64.rpm
+wget https://packages.chef.io/files/current/chef-workstation/21.9.613/el/8/chef-workstation-21.9.613-1.el8.x86_64.rpm
+sudo rpm -ivh ./chef-workstation-21.9.613-1.el8.x86_64.rpm
 chef -v
 ```
 
