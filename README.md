@@ -224,6 +224,18 @@ Connecting to host server:443
 Successfully verified certificates from `server'
 </pre>
 
+### List all the configured profiles
+```
+knife config list-profiles
+```
+The expected output is
+<pre>
+[jegan@workstation ~]$ knife config list-profiles
+ Profile  Client  Key                Server                      
+--------------------------------------------------------------
+*default  jegan   ~/.chef/jegan.pem  https://server:443/tektutor 
+</pre>
+
 ### Creating a chef-repo in Workstation
 ```
 cd ~
