@@ -80,6 +80,8 @@ Chef CLI version: 5.4.2
 Chef Habitat version: 1.6.351
 </pre>
 
+You may refer further installation instructions in the official page https://docs.chef.io/workstation/install_workstation/
+
 ### Setting up your Chef Server
 Latest version of Chef Infra Server can be downloaded here https://downloads.chef.io/tools/infra-server
 ```
