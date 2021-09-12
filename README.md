@@ -150,6 +150,29 @@ The expected output is
 chef-server 14.9.23
 </pre>
 
+### Configuring and Starting Chef server
+```
+sudo chef-server-ctl reconfigure
+```
+
+### Checking the Chef Server status
+```
+sudo chef-server-ctl status
+```
+The expected output is
+<pre>
+[jegan@tektutor ~]$ sudo chef-server-ctl status
+[sudo] password for jegan: 
+run: bookshelf: (pid 21040) 116s; run: log: (pid 20510) 165s
+run: elasticsearch: (pid 21004) 117s; run: log: (pid 20292) 215s
+run: nginx: (pid 20990) 117s; run: log: (pid 20787) 126s
+run: oc_bifrost: (pid 20879) 118s; run: log: (pid 20155) 232s
+run: oc_id: (pid 20987) 117s; run: log: (pid 20199) 221s
+run: opscode-erchef: (pid 21108) 116s; run: log: (pid 20635) 158s
+run: postgresql: (pid 20856) 118s; run: log: (pid 19608) 249s
+run: redis_lb: (pid 20832) 120s; run: log: (pid 20831) 120s
+</pre>
+
 ### Creating a chef-repo in Workstation
 ```
 cd ~
