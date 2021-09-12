@@ -2,7 +2,7 @@
 
 ### What is Chef ?
 - is a Configuration Management Tool
-- is a Infrastructure as Code Tool
+- is an Infrastructure as Code Tool
 - Developed by OpsCode in Ruby and Erlang 
 - Sep 2020,  Progress acquired Chef
 - uses Ruby as the Domain Specific Language (DSL)
