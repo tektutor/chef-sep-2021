@@ -16,7 +16,15 @@
 #### Chef Workstation
       - is the system where DevOps Engineers write Cookbooks to automate installations on the Chef Nodes
       - Chef Workstation tools are installed here
-
+      - Chef workstation tools is the new set of tools that replaces ChefDk.
+      - Chef workstation comes with
+           - Chef Infra client
+           - Chef InSpec
+           - Chef Habitat
+           - Chef and Knife CLI tools
+           - Test Kitchen and Cookstyle
+           - All tools required to author cookbooks and upload to Chef Infra Server
+           
 #### Chef Server
       - is the centralized Chef server where all the Cookbooks are kept
       - Chef Infra server has to be installed on this machine
