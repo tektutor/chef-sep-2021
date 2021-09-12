@@ -175,14 +175,15 @@ run: redis_lb: (pid 20832) 120s; run: log: (pid 20831) 120s
 
 ### Create an admin user in Chef Server
 ```
-sudo chef-server-ctl user-create jegan Jeganathan Swaminathan jegan@tektutor.org 'Admin@123' --filename /home/jegan/jegan.pem
+sudo chef-server-ctl user-create jegan Jeganathan Swaminathan jegan@tektutor.org 'admin@123' --filename /home/jegan/jegan.pem
 ```
 We need to scp the jegan.pem file to the Chef workstation machine at /home/jegan/.chef/jegan.pem
 
-### Create an organization and associate the admin user to the the organization
+### Create an organization and associate the admin user to the organization in Chef Server
 ```
-sudo chef-server-ctl org-create tektutor 'tektutor' --association_user jegan --filename tektutor-validator.pem
+sudo chef-server-ctl org-create tektutor 'TekTutor' --association_user jegan --filename /home/jegan/org-validator.pem
 ```
+
 ### In the Chef workstation machine
 ```
 knife configure
