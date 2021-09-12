@@ -14,23 +14,23 @@
   - Chef Node(s)
 
 #### Chef Workstation
-      - is the system where DevOps Engineers write Cookbooks to automate installations on the Chef Nodes
-      - Chef Workstation tools are installed here
-      - Chef workstation tools is the new set of tools that replaces ChefDk.
-      - Chef workstation comes with
-        - Chef Infra client
-        - Chef InSpec
-        - Chef Habitat
-        - Chef and Knife CLI tools
-        - Test Kitchen and Cookstyle
-        - All tools required to author cookbooks and upload to Chef Infra Server
+- is the system where DevOps Engineers write Cookbooks to automate installations on the Chef Nodes
+- Chef Workstation tools are installed here
+- Chef workstation tools is the new set of tools that replaces ChefDk.
+- Chef workstation comes with
+  - Chef Infra client
+  - Chef InSpec
+  - Chef Habitat
+  - Chef and Knife CLI tools
+  - Test Kitchen and Cookstyle
+  - All tools required to author cookbooks and upload to Chef Infra Server
            
 #### Chef Server
-      - is the centralized Chef server where all the Cookbooks are kept
-      - Chef Infra server has to be installed on this machine
+- is the centralized Chef server where all the Cookbooks are kept
+- Chef Infra server has to be installed on this machine
 
 #### Chef Nodes
-      - are the machines where software installations must be automated 
+- are the machines where software installations must be automated 
 
 ### Installing Ruby in Chef Workstation
 ```
@@ -60,9 +60,6 @@ The expected output is
 [jegan@tektutor ruby-3.0.2]$ ruby --version
 ruby 3.0.2p107 (2021-07-07 revision 0db68f0233) [x86_64-linux]
 </pre>
-
-
-
 
 
 ### Setting up your Chef Workstation
