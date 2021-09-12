@@ -173,7 +173,7 @@ Licenses that need accepting:
 
 Do you accept the 3 product licenses (yes/no)?
 
-> yes
+> <b>yes</b>
 
 Persisting 3 product licenses...
 ✔ 3 product licenses persisted.
