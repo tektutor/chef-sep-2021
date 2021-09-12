@@ -31,7 +31,40 @@
 
 #### Chef Nodes
       - are the machines where software installations must be automated 
-      
+
+### Installing Ruby in Chef Workstation
+```
+cd ~/Downloads
+wget https://cache.ruby-lang.org/pub/ruby/3.0/ruby-3.0.2.tar.gz
+tar xvfz ruby-3.0.2.tar.gz
+```
+
+Edit your .bashrc file and append the below lines
+```
+# User specific aliases and functions
+export RUBY_HOME=/home/jegan/Downloads/ruby-3.0.2
+export PATH=$RUBY_HOME/bin:$PATH
+eval "$(chef shell-init bash)"
+```
+
+Apply the changes in .bashrc on the current terminal session
+```
+source ~/.bashrc
+```
+Check ruby version
+```
+ruby --version
+```
+The expected output is
+<pre>
+[jegan@tektutor ruby-3.0.2]$ ruby --version
+ruby 3.0.2p107 (2021-07-07 revision 0db68f0233) [x86_64-linux]
+</pre>
+
+
+
+
+
 ### Setting up your Chef Workstation
 ```
 cd ~/Downloads
