@@ -39,6 +39,46 @@ wget https://packages.chef.io/files/current/chef-workstation/21.9.613/el/8/chef-
 sudo rpm -ivh ./chef-workstation-21.9.613-1.el8.x86_64.rpm
 chef -v
 ```
+The expected output is
+<pre>
+[jegan@tektutor Downloads]$ wget https://packages.chef.io/files/current/chef-workstation/21.9.613/el/8/chef-workstation-21.9.613-1.el8.x86_64.rpm
+--2021-09-12 01:45:12--  https://packages.chef.io/files/current/chef-workstation/21.9.613/el/8/chef-workstation-21.9.613-1.el8.x86_64.rpm
+Resolving packages.chef.io (packages.chef.io)... 151.101.158.110
+Connecting to packages.chef.io (packages.chef.io)|151.101.158.110|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Could not parse String-Transport-Security header
+Length: 130803188 (125M) [application/x-rpm]
+Saving to: ‘chef-workstation-21.9.613-1.el8.x86_64.rpm.1’
+
+chef-workstation-21.9.613-1.el 100%[=================================================>] 124.74M   191KB/s    in 20m 51s 
+
+2021-09-12 02:06:15 (102 KB/s) - ‘chef-workstation-21.9.613-1.el8.x86_64.rpm.1’ saved [130803188/130803188]
+
+[jegan@tektutor Downloads]$ sudo rpm -ivh ./chef-workstation-21.9.613-1.el8.x86_64.rpm
+warning: ./chef-workstation-21.9.613-1.el8.x86_64.rpm: Header V4 DSA/SHA1 Signature, key ID 83ef826a: NOKEY
+Verifying...                          ################################# [100%]
+Preparing...                          ################################# [100%]
+Updating / installing...
+   1:chef-workstation-21.9.613-1.el8  ################################# [100%]
+ldd: /opt/chef-workstation/components/chef-workstation-app/chef-workstation-app: No such file or directory
+
+The Chef Workstation App is available.
+
+Launch the App by running 'chef-workstation-app'.
+The App will then be available in the system tray.
+
+Thank you for installing Chef Workstation!
+You can find some tips on getting started at https://docs.chef.io/workstation/getting_started/
+
+[jegan@localhost Downloads]$ chef -v
+Chef Workstation version: 21.9.613
+Test Kitchen version: 3.0.0
+Cookstyle version: 7.24.1
+Chef Infra Client version: 17.4.38
+Chef InSpec version: 4.41.20
+Chef CLI version: 5.4.2
+Chef Habitat version: 1.6.351
+</pre>
 
 ### Setting up your Chef Server
 Latest version of Chef Infra Server can be downloaded here https://downloads.chef.io/tools/infra-server
