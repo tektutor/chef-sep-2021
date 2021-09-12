@@ -177,11 +177,49 @@ run: redis_lb: (pid 20832) 120s; run: log: (pid 20831) 120s
 ```
 sudo chef-server-ctl user-create jegan Jeganathan Swaminathan jegan@tektutor.org 'Admin@123' --filename /home/jegan/jegan.pem
 ```
+We need to scp the jegan.pem file to the Chef workstation machine at /home/jegan/.chef/jegan.pem
 
 ### Create an organization and associate the admin user to the the organization
 ```
 sudo chef-server-ctl org-create tektutor 'tektutor' --association_user jegan --filename tektutor-validator.pem
 ```
+### In the Chef workstation machine
+```
+knife configure
+```
+You need to type URL as https://server:443/tektutor and user as jegan.
+
+In chefserver, chefworkstation and nodes, we need to ensure the /etc/hosts file has the below entries
+172.16.95.154   server
+172.16.95.157   workstation
+172.16.95.158   node1
+172.16.95.155   node2                      
+The expected output is
+<pre>
+[jegan@workstation ~]$ <b>knife configure</b>
+Please enter the chef server URL: [https://workstation/organizations/myorg] https://server:443/tektutor
+Please enter an existing username or clientname for the API: [jegan] 
+Overwrite /home/jegan/.chef/credentials? (Y/N) Y
+*****
+
+You must place your client key in:
+  /home/jegan/.chef/jegan.pem
+Before running commands with Knife
+
+*****
+Knife configuration file written to /home/jegan/.chef/credentials
+</pre>
+
+### Test if knife on chef workstation is able to connect to server
+```
+knife ssl check
+```
+The expected output is
+<pre>
+[jegan@workstation ~]$ <b>knife ssl check</b>
+Connecting to host server:443
+Successfully verified certificates from `server'
+</pre>
 
 ### Creating a chef-repo in Workstation
 ```
