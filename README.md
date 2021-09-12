@@ -173,6 +173,11 @@ run: postgresql: (pid 20856) 118s; run: log: (pid 19608) 249s
 run: redis_lb: (pid 20832) 120s; run: log: (pid 20831) 120s
 </pre>
 
+### Create an admin user in Chef Server
+```
+sudo chef-server-ctl user-create jegan Jeganathan Swaminathan jegan@tektutor.org 'Admin@123' --filename /home/jegan/jegan.pem
+```
+
 ### Creating a chef-repo in Workstation
 ```
 cd ~
