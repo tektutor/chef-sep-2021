@@ -213,6 +213,21 @@ Before running commands with Knife
 Knife configuration file written to /home/jegan/.chef/credentials
 </pre>
 
+### Download the self-signed certificate from the Chef Infra Server to Workstation
+```
+knife ssl fetch
+```
+The expected output is
+<pre>
+[jegan@workstation ~]$ <b>knife ssl fetch</b>
+WARNING: Certificates from 172.16.95.154 will be fetched and placed in your trusted_cert
+       directory (/home/jegan/.chef/trusted_certs).
+       
+       Knife has no means to verify these are the correct certificates. You should
+       verify the authenticity of these certificates after downloading.
+Adding certificate for server in /home/jegan/.chef/trusted_certs/server.crt
+</pre>
+
 ### Test if knife on chef workstation is able to connect to server
 ```
 knife ssl check
