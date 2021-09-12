@@ -18,12 +18,12 @@
       - Chef Workstation tools are installed here
       - Chef workstation tools is the new set of tools that replaces ChefDk.
       - Chef workstation comes with
-           - Chef Infra client
-           - Chef InSpec
-           - Chef Habitat
-           - Chef and Knife CLI tools
-           - Test Kitchen and Cookstyle
-           - All tools required to author cookbooks and upload to Chef Infra Server
+        - Chef Infra client
+        - Chef InSpec
+        - Chef Habitat
+        - Chef and Knife CLI tools
+        - Test Kitchen and Cookstyle
+        - All tools required to author cookbooks and upload to Chef Infra Server
            
 #### Chef Server
       - is the centralized Chef server where all the Cookbooks are kept
