@@ -189,7 +189,7 @@ sudo chef-server-ctl org-create tektutor 'TekTutor' --association_user jegan --f
 ```
 knife configure
 ```
-You need to type URL as https://server:443 and user as jegan.
+You need to type URL as https://server:443:/organizations/tektutor and user as jegan.
 
 In chefserver, chefworkstation and nodes, we need to ensure the /etc/hosts file has the below entries
 ```
@@ -202,7 +202,7 @@ In chefserver, chefworkstation and nodes, we need to ensure the /etc/hosts file 
 The expected output is
 <pre>
 [jegan@workstation ~]$ <b>knife configure</b>
-Please enter the chef server URL: [https://workstation/organizations/myorg] https://server:443
+Please enter the chef server URL: [https://workstation/organizations/myorg] https://server:443/organizations/tektutor
 Please enter an existing username or clientname for the API: [jegan] 
 Overwrite /home/jegan/.chef/credentials? (Y/N) Y
 *****
@@ -288,3 +288,15 @@ Generating Chef Infra repo chef-repo
 Your new Chef Infra repo is ready! Type `cd chef-repo` to enter it.
 [jegan@tektutor ~]$ 
 </pre>
+
+### Bootstrapping Node1
+The assumption is node1 is a Unix/Linux server with SSH Server up and running.
+```
+knife bootstrap node1 -U jegan -P root --node-name node1
+```
+
+### Bootstrapping Node2
+The assumption is node2 is a Unix/Linux server with SSH Server up and running.
+```
+knife bootstrap node2 -U jegan -P root --node-name node2
+```
