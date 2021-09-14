@@ -109,6 +109,18 @@ Chef CLI version: 5.4.2
 Chef Habitat version: 1.6.351
 </pre>
 
+Test Kitchen - is used to test your cookbooks on different platforms(OS)
+
+Cookstyle - is a code linting tool that helps you write better Chef Infra cookbooks by detecting and automatically correcting style, syntax, and logical mistakes in your code.
+
+Chef Infra Client - is an agent that runs locally on every node that is under management by Chef Infra Server. 
+
+Chef InSpec - is a testing tool to verify security compliance
+
+Chef CLI - generates repositories, cookbooks, recipes, attributes, templates, and custom resources. 
+
+Chef Habitat - Standardize application packaging and deployment practices across a wide range of systems.
+
 You may refer further installation instructions in the official page https://docs.chef.io/workstation/install_workstation/
 
 ### Setting up your Chef Server
