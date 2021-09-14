@@ -24,13 +24,53 @@
   - Chef and Knife CLI tools
   - Test Kitchen and Cookstyle
   - All tools required to author cookbooks and upload to Chef Infra Server
-           
+
+Workstation Tools
+Test Kitchen - is used to test your cookbooks on different platforms(OS)
+
+Cookstyle - is a code linting tool that helps you write better Chef Infra cookbooks by detecting and automatically correcting style, syntax, and logical mistakes in your code.
+
+Chef Infra Client - is an agent that runs locally on every node that is under management by Chef Infra Server. 
+
+Chef InSpec - is a testing tool to verify security compliance
+
+Chef CLI - generates repositories, cookbooks, recipes, attributes, templates, and custom resources. 
+
+Chef Habitat - Standardize application packaging and deployment practices across a wide range of systems.
+
+Knife - a tool that helps in managing nodes
+
+chef-repo - is a directory on the workstation that stores everything you need to define your infrastructure with Chef Infra.
+1. Cookbooks (including recipes, attributes, custom resources, libraries, and templates)
+2. Data bags
+3. Policyfiles
+
 #### Chef Server
 - is the centralized Chef server where all the Cookbooks are kept
 - Chef Infra server has to be installed on this machine
 
+Chef Server Components
+- Bookshelf is used to store cookbook content—files, templates
+- Messages - chef-elasticsearch wraps Elastisearch and exposes its REST API for indexing and search. 
+- PostgreSQL is the data storage repository for the Chef Infra Server.
+
 #### Chef Nodes
 - are the machines where software installations must be automated 
+
+Chef Node Components
+- Chef Client 
+  - runs on every node managed by Chef Infra Server
+  - synchronizes Cookbook from Chef Infra Server on the node
+  
+- Ohai
+  - collects information about the Chef nodes like OS, Hardware, Hostname, etc
+  - this gets invoked at the begining of every Chef Infra run
+
+- Attribute
+  - specific detail about a Node like IPAddress, Hostname, Programming Language versions, etc
+
+- Run-lists
+  - defines configuration steps required to bring a node to a desired state
 
 ### Installing Ruby in Chef Workstation
 ```
@@ -108,18 +148,6 @@ Chef InSpec version: 4.41.20
 Chef CLI version: 5.4.2
 Chef Habitat version: 1.6.351
 </pre>
-
-Test Kitchen - is used to test your cookbooks on different platforms(OS)
-
-Cookstyle - is a code linting tool that helps you write better Chef Infra cookbooks by detecting and automatically correcting style, syntax, and logical mistakes in your code.
-
-Chef Infra Client - is an agent that runs locally on every node that is under management by Chef Infra Server. 
-
-Chef InSpec - is a testing tool to verify security compliance
-
-Chef CLI - generates repositories, cookbooks, recipes, attributes, templates, and custom resources. 
-
-Chef Habitat - Standardize application packaging and deployment practices across a wide range of systems.
 
 You may refer further installation instructions in the official page https://docs.chef.io/workstation/install_workstation/
 
