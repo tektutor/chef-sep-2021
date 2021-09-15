@@ -37,7 +37,7 @@ centos                      8         300e315adb2f   9 months ago     209MB
 You may run this command from any directory
 ```
 docker run -d --name node1 --hostname node1 tektutor/chef-centos-node:latest
-docker run -d --name node2 --hostname node2 tektutor/chef-centos-node:latest
+docker run -d --name node2 --hostname node2 tektutor/chef-ubuntu-node:latest
 ```
 See if the containers are running
 ```
