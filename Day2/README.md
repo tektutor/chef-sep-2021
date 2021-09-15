@@ -144,3 +144,72 @@ The expected output is
 node1
 node2
 </pre>
+
+### Chef Documentation Reference
+```
+https://docs.chef.io/resource.html
+```
+
+### Let us create a recipe folder
+```
+cd ~
+mkdir myrecipe
+cd myrecipe
+```
+
+### Let us write our first Chef Recipe
+Under the myrecipe, create a file user.rb with the below content
+```
+user 'devops' do
+   shell '/bin/bash'
+   uid   '9999'
+end
+```
+I gave 3 white spaces for indentation.
+
+Make sure the file is save before closing the text editor.
+
+### Let us verify if our system already has an user by name 'devops'
+```
+id devops
+```
+The expected output is
+<pre>
+id: devops: no such user
+</pre>
+
+As you would have checked it yourself, currently there is no user by name 'devops' in RPS Lab machine.
+
+### Check if the recipe is error free with no syntax
+```
+cookstyle user.rb
+```
+The expected output is
+<pre>
+[jegan@tektutor myrecipes]$ cookstyle user.rb 
+Inspecting 1 file
+C
+
+Offenses:
+
+user.rb:2:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 3) spaces for indentation. (https://rubystyle.guide#spaces-indentation)
+   shell '/bin/bash'
+^^^
+
+1 file inspected, 1 offense detected, 1 offense auto-correctable
+</pre>
+
+Now edit the user.rb and make sure, shell and uid are idented with 2 white spaces as pointed by cookstyle tool.
+
+Now rerun the cookstyle to verify the syntax is correct.
+```
+cookstyle user.rb
+```
+The expected output is
+<pre>
+[jegan@tektutor myrecipes]$ <b>cookstyle user.rb</b> 
+Inspecting 1 file
+.
+
+1 file inspected, <b>no offenses</b> detected
+</pre>
