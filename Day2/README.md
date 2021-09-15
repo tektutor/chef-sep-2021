@@ -1,4 +1,12 @@
-### Build Chef Node Docker Images
+### In case you havent' clone this repository so far, you may do now
+```
+cd ~
+mkdir Training
+cd Training
+git clone https://github.com/tektutor/chef-sep-2021.git
+```
+
+### Build Chef Node Docker Images (RPS Lab Machine)
 ```
 cd ~/Training/chef-sep-2021
 git pull
