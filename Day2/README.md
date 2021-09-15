@@ -314,6 +314,44 @@ Running handlers:
 Running handlers complete
 Infra Phase complete, 0/1 resources updated in 05 seconds
 </pre>
+As you noticed, Chef didn't attempt to create the user 'devops' as the user already exists.
+
+Idempotency property of Chef ensures, Chef acts only when the current state of the machine is different from the desired state.  If the current state is inline with desired state, chef reports it is up to date and no action is taken.
+
+Let us try to delete the user using Linux command to see, how Chef responds after the user is deleted
+```
+sudo userdel -r devops
+```
+
+Let us re-run the Chef recipe one more time
+```
+sudo chef-client --local-mode user.rb
+```
+The expected output is
+<pre>
+[jegan@tektutor myrecipes]$ sudo userdel -r devops
+[sudo] password for jegan: 
+userdel: devops home directory (/home/devops) not found
+[jegan@tektutor myrecipes]$ sudo chef-client --local-mode user.rb
+[2021-09-14T20:11:10-07:00] WARN: No config file found or specified on command line. Using command line options instead.
+[2021-09-14T20:11:10-07:00] WARN: No cookbooks directory found at or above current directory.  Assuming /home/jegan/Training/chef-sep-2021/Day2/myrecipes.
+Chef Infra Client, version 17.4.38
+Patents: https://www.chef.io/patents
+Infra Phase starting
+Resolving cookbooks for run list: []
+Synchronizing cookbooks:
+Installing cookbook gem dependencies:
+Compiling cookbooks...
+[2021-09-14T20:11:15-07:00] WARN: Node tektutor has an empty run list.
+Converging 1 resources
+Recipe: @recipe_files::/home/jegan/Training/chef-sep-2021/Day2/myrecipes/user.rb
+  * linux_user[devops] action create
+    <b>- create user devops</b>
+
+Running handlers:
+Running handlers complete
+Infra Phase complete, 1/1 resources updated in 05 seconds
+</pre>
 
 
 ### Remove the devops user
