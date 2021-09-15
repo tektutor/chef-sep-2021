@@ -354,9 +354,18 @@ Infra Phase complete, 1/1 resources updated in 05 seconds
 </pre>
 
 
-### Remove the devops user
+### Remove the devops user using recipe
+Update your user.rb recipe as shown below
 ```
+user 'devops' do
+  shell '/bin/bash'
+  uid   '9999'
+  <b>action :remove</b>
+end
 ```
+
+When the <b>action</b> keyword isn't mentioned in the user resource block, Chef assumes you are attempting to create the user.
+
 The expected output is
 <pre>
 [jegan@tektutor myrecipes]$ sudo chef-client --local-mode user.rb
@@ -379,4 +388,17 @@ Recipe: @recipe_files::/home/jegan/Training/chef-sep-2021/Day2/myrecipes/user.rb
 Running handlers:
 Running handlers complete
 Infra Phase complete, 1/1 resources updated in 05 seconds
+</pre>
+
+You may see if the user is really removed using Linux command
+```
+id devops
+sudo grep -i devops /etc/passwd
+```
+The expected output is
+<pre>
+[jegan@tektutor myrecipes]$ id devops
+id: ‘devops’: no such user
+[jegan@tektutor myrecipes]$ sudo grep -i devops /etc/passwd
+
 </pre>
