@@ -33,6 +33,11 @@ ubuntu                      20.04     fb52e22af1b0   2 weeks ago      72.8MB
 centos                      8         300e315adb2f   9 months ago     209MB
 </pre>
 
+### Removing node2 container
+```
+docker rm -f node2
+```
+
 ### Let us create two nodes one of type centos and other of type ubuntu
 You may run this command from any directory
 ```
