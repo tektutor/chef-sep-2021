@@ -213,3 +213,32 @@ Inspecting 1 file
 
 1 file inspected, <b>no offenses</b> detected
 </pre>
+
+### Let's dry-run our recipe locally with chef-zero
+This is how you could smoke-test your recipies before running it on the actual server
+```
+chef-client --local-mode user.rb --why-run
+```
+The expected output is
+<pre>
+[jegan@tektutor myrecipes]$ chef-client --local-mode user.rb --why-run
+[2021-09-14T19:52:00-07:00] WARN: No config file found or specified on command line. Using command line options instead.
+[2021-09-14T19:52:00-07:00] WARN: No cookbooks directory found at or above current directory.  Assuming /home/jegan/Training/chef-sep-2021/Day2/myrecipes.
+Chef Infra Client, version 17.4.38
+Patents: https://www.chef.io/patents
+Infra Phase starting
+[2021-09-14T19:52:05-07:00] ERROR: shard_seed: Failed to get dmi property serial_number: is dmidecode installed?
+Resolving cookbooks for run list: []
+Synchronizing cookbooks:
+Installing cookbook gem dependencies:
+Compiling cookbooks...
+[2021-09-14T19:52:05-07:00] WARN: Node tektutor has an empty run list.
+Converging 1 resources
+Recipe: @recipe_files::/home/jegan/Training/chef-sep-2021/Day2/myrecipes/user.rb
+  * linux_user[devops] action create (up to date)
+[2021-09-14T19:52:05-07:00] WARN: In why-run mode, so NOT performing node save.
+
+Running handlers:
+Running handlers complete
+Infra Phase complete, 0/1 resources would have been updated
+</pre>
