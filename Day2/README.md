@@ -402,3 +402,31 @@ id: ‘devops’: no such user
 [jegan@tektutor myrecipes]$ sudo grep -i devops /etc/passwd
 
 </pre>
+
+### Let's install telnet utility using a recipe
+First let's ensure telnet isn't already installed
+```
+rpm -qa | grep -i telnet
+```
+
+Let us now create a telnet.rb file with the below content
+```
+package 'telnet' do
+  action :install
+end
+```
+
+Do a syntax check
+```
+cookstyle ./telnet.rb
+```
+
+Do a dry-run
+```
+sudo chef-client --local-mode --why-run telnet.rb
+```
+
+Let's actually run it now
+```
+sudo chef-client --local-mode telnet.rb
+```
