@@ -45,9 +45,60 @@ CONTAINER ID   IMAGE                              COMMAND               CREATED 
 </b>
 </pre>
 
+### Find the IP Address of your RPS Lab machine
+```
+ifconfig ens192
+```
+My RPS Lab IP Address seems to be 172.20.0.110
+
+### Find the IP Address of your node1
+```
+docker inspect node1 | grep IPA
+```
+My node1 IP seems to be 172.17.0.2
+
+### Find the IP Address of your node2
+```
+docker inspect node2 | grep IPA
+```
+My node2 IP seems to be 172.17.0.3
+
+We need to add the above IP Address to the /etc/hosts file in RPS Lab machine, node1 and nod2
+```
+sudo vim /etc/hosts
+```
+Make sure you append the below in the RPS Lab machine /etc/hosts and save it.
+```
+172.17.0.2      node1
+172.17.0.3      node2
+172.20.0.110    CentOS
+```
+Similarly append in node1
+```
+ssh root@172.17.0.2
+vim /etc/hosts
+```
+Make sure you append the below in the node1 /etc/hosts and save it.
+```
+172.17.0.2      node1
+172.17.0.3      node2
+172.20.0.110    CentOS
+
+Similarly append in node2
+```
+ssh root@172.17.0.3
+vim /etc/hosts
+```
+Make sure you append the below in the node2 /etc/hosts and save it.
+```
+172.17.0.2      node1
+172.17.0.3      node2
+172.20.0.110    CentOS
+
+<b>The above steps are crucial for bootstrapping your nodes. Make sure the above steps are completed before you proceed below</b>
+
 ### Bootstrap node1 and node2
 ```
-ChefNodeDockerImages  README.md
 [jegan@tektutor]$ knife bootstrap node1 -U root -P root --node-name node1
 Connecting to node1 using ssh
 The authenticity of host 'node1 (172.17.0.2)' can't be established.
@@ -77,3 +128,19 @@ Running handlers:
  [node1] Running handlers complete
  [node1] Infra Phase complete, 0/0 resources updated in 02 seconds
 ```
+Repeat the same for node2 as well
+```
+knife bootstrap node2 -U root -P root --node-name node2
+```
+
+### Test if the nodes are registered(connected) with Chef server
+You may execute the below command from any directory.
+```
+knife node list
+```
+The expected output is
+<pre>
+[jegan@tektutor]$ knife node list
+node1
+node2
+</pre>
