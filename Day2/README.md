@@ -242,3 +242,103 @@ Running handlers:
 Running handlers complete
 Infra Phase complete, 0/1 resources would have been updated
 </pre>
+
+### Let's run it on Chef-zero locally
+```
+sudo chef-client --local-mode user.rb
+```
+The expected output is
+<pre>
+[jegan@tektutor myrecipes]$ sudo chef-client --local-mode user.rb
+[2021-09-14T20:00:40-07:00] WARN: No config file found or specified on command line. Using command line options instead.
+[2021-09-14T20:00:40-07:00] WARN: No cookbooks directory found at or above current directory.  Assuming /home/jegan/Training/chef-sep-2021/Day2/myrecipes.
+Chef Infra Client, version 17.4.38
+Patents: https://www.chef.io/patents
+Infra Phase starting
+Resolving cookbooks for run list: []
+Synchronizing cookbooks:
+Installing cookbook gem dependencies:
+Compiling cookbooks...
+[2021-09-14T20:00:45-07:00] WARN: Node tektutor has an empty run list.
+Converging 1 resources
+Recipe: @recipe_files::/home/jegan/Training/chef-sep-2021/Day2/myrecipes/user.rb
+  * linux_user[devops] action create
+    - <b>create user devops</b>
+
+Running handlers:
+Running handlers complete
+Infra Phase complete, 1/1 resources updated in 05 seconds
+</pre>
+
+You may verify if the user is really created by type the below command(s)
+```
+id devops
+```
+The expected output is
+<pre>
+[jegan@tektutor myrecipes]$ id devops
+uid=9999(devops) gid=9999(devops) groups=9999(devops)
+</pre>
+
+You may also verify if the devops user entry is there in /etc/passwd file
+```
+sudo grep -i devops /etc/passwd
+```
+The expected output is
+<pre>
+devops:x:9999:9999::/home/devops:/bin/bash
+</pre>
+
+### Let's try to understand idempotency
+```
+sudo chef-client --local-mode user.rb
+```
+The expected output is
+<pre>
+[jegan@tektutor myrecipes]$ sudo chef-client --local-mode user.rb
+[2021-09-14T20:04:54-07:00] WARN: No config file found or specified on command line. Using command line options instead.
+[2021-09-14T20:04:54-07:00] WARN: No cookbooks directory found at or above current directory.  Assuming /home/jegan/Training/chef-sep-2021/Day2/myrecipes.
+Chef Infra Client, version 17.4.38
+Patents: https://www.chef.io/patents
+Infra Phase starting
+Resolving cookbooks for run list: []
+Synchronizing cookbooks:
+Installing cookbook gem dependencies:
+Compiling cookbooks...
+[2021-09-14T20:05:00-07:00] WARN: Node tektutor has an empty run list.
+Converging 1 resources
+Recipe: @recipe_files::/home/jegan/Training/chef-sep-2021/Day2/myrecipes/user.rb
+<b>  * linux_user[devops] action create (up to date)</b>
+
+Running handlers:
+Running handlers complete
+Infra Phase complete, 0/1 resources updated in 05 seconds
+</pre>
+
+
+### Remove the devops user
+```
+```
+The expected output is
+<pre>
+[jegan@tektutor myrecipes]$ sudo chef-client --local-mode user.rb
+[sudo] password for jegan: 
+[2021-09-14T19:59:12-07:00] WARN: No config file found or specified on command line. Using command line options instead.
+[2021-09-14T19:59:12-07:00] WARN: No cookbooks directory found at or above current directory.  Assuming /home/jegan/Training/chef-sep-2021/Day2/myrecipes.
+Chef Infra Client, version 17.4.38
+Patents: https://www.chef.io/patents
+Infra Phase starting
+Resolving cookbooks for run list: []
+Synchronizing cookbooks:
+Installing cookbook gem dependencies:
+Compiling cookbooks...
+[2021-09-14T19:59:17-07:00] WARN: Node tektutor has an empty run list.
+Converging 1 resources
+Recipe: @recipe_files::/home/jegan/Training/chef-sep-2021/Day2/myrecipes/user.rb
+  * linux_user[devops] action remove
+    <b>- remove user devops</b>
+
+Running handlers:
+Running handlers complete
+Infra Phase complete, 1/1 resources updated in 05 seconds
+</pre>
