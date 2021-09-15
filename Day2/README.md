@@ -180,7 +180,7 @@ id: devops: no such user
 
 As you would have checked it yourself, currently there is no user by name 'devops' in RPS Lab machine.
 
-### Check if the recipe is error free with no syntax
+### Check if the recipe is error free with no syntax errors
 ```
 cookstyle user.rb
 ```
