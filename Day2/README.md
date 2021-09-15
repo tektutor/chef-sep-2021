@@ -430,3 +430,41 @@ Let's actually run it now
 ```
 sudo chef-client --local-mode telnet.rb
 ```
+
+### Installing webserver - single recipe with multiple resources
+```
+# Install httpd web server in CentOS
+package 'httpd' do
+  action :install
+end
+
+# Deploy custom web page
+file '/var/www/html/index.html' do
+  action :create
+end
+
+# Start the web server
+service 'httpd' do
+  action :start
+end
+```
+Best practice
+<pre>
+Create Recipe --> Check --> Test --> Run
+</pre>
+```
+cookstyle webserver.rb
+sudo chef-client --local-mode webserver.rb --why-run
+sudo chef-client --local-mode webserver.rb
+curl localhost
+```
+
+### Creating your first Chef cookbook
+
+Cleanup existing httpd installation
+```
+sudo yum remove httpd -y
+sudo rm -rf /var/www/html/index.html
+curl localhost
+```
+
