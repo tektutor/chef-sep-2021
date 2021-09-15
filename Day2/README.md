@@ -83,7 +83,7 @@ Make sure you append the below in the node1 /etc/hosts and save it.
 172.17.0.2      node1
 172.17.0.3      node2
 172.20.0.110    CentOS
-
+```
 Similarly append in node2
 ```
 ssh root@172.17.0.3
@@ -94,7 +94,7 @@ Make sure you append the below in the node2 /etc/hosts and save it.
 172.17.0.2      node1
 172.17.0.3      node2
 172.20.0.110    CentOS
-
+```
 <b>The above steps are crucial for bootstrapping your nodes. Make sure the above steps are completed before you proceed below</b>
 
 ### Bootstrap node1 and node2
