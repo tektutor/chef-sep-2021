@@ -145,15 +145,6 @@ Infra Phase complete, 2/4 resources would have been updated
 [jegan@tektutor chef-repo]$ 
 </pre>
 
-### RunList
-Runlist is a way we can control the order in which multiple recipes should be executed by the chef-client in a required order.
-
-Syntax looks as below
-```
-chef-client --runlist "recipe[Cookbook-Name::Recipe-Name]"
-chef-client --runlist "recipe[Cookbook-Name]
-chef-client --runlist "recipe[Cookbane-Name1::default],recipe[Cookbook-Name2::recipe-name]"
-```
 
 ### Include Recipe
 We can break the larger recipe file with multiple resource calls into smaller moduler recipes with this feature.
@@ -210,7 +201,7 @@ service 'httpd' do
 end
 ```
 
-Let us upload the cookbook to actual server
+### Let us upload the cookbook to actual server
 ```
 cd ~/Training/chef-sep-2021/Day3/chef-repo/cookbooks
 knife cookbook upload "webserver" --cookbook-path .
@@ -225,3 +216,36 @@ Uploading webserver      [0.1.0]
 Uploaded 1 cookbook.
 </pre>
 
+### RunList
+Runlist is a way we can control the order in which multiple recipes should be executed by the chef-client in a required order.
+
+Syntax looks as below
+```
+chef-client --runlist "recipe[Cookbook-Name::Recipe-Name]"
+chef-client --runlist "recipe[Cookbook-Name]
+chef-client --runlist "recipe[Cookbane-Name1::default],recipe[Cookbook-Name2::recipe-name]"
+```
+
+Let us add the webserver cookbook to the runlist of node1 and node2
+```
+cd ~/Training/chef-sep-2021
+git pull
+cd Day3/chef-repo/cookbooks
+
+knife node run_list add node1 "recipe[webserver]"
+knife node run_list add node2 "recipe[webserver]"
+```
+
+The expected output is
+<pre>
+[jegan@workstation cookbooks]$<b> knife node run_list add node1 "recipe[webserver]" <b>
+node1:
+  run_list:
+    recipe[httpd]
+    recipe[webserver]
+[jegan@workstation cookbooks]$ knife node run_list add node2 "recipe[webserver]"
+node2:
+  run_list:
+    recipe[apache]
+    recipe[webserver]
+</pre>
