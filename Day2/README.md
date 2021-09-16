@@ -1,4 +1,4 @@
-### In case you havent' clone this repository so far, you may do now
+### In case you havent' cloned this repository so far, you may do now
 ```
 cd ~
 mkdir Training
@@ -33,9 +33,9 @@ ubuntu                      20.04     fb52e22af1b0   2 weeks ago      72.8MB
 centos                      8         300e315adb2f   9 months ago     209MB
 </pre>
 
-### Removing node2 container
+### Removing existing node1 and node2 containers
 ```
-docker rm -f node2
+docker rm -f node1 node2
 ```
 
 ### Let us create two nodes one of type centos and other of type ubuntu
@@ -76,7 +76,7 @@ docker inspect node2 | grep IPA
 ```
 My node2 IP seems to be 172.17.0.3
 
-We need to add the above IP Address to the /etc/hosts file in RPS Lab machine, node1 and nod2
+We need to add the above IP Address to the /etc/hosts file in RPS Lab machine, node1 and on node2.
 ```
 sudo vim /etc/hosts
 ```
@@ -86,10 +86,13 @@ Make sure you append the below in the RPS Lab machine /etc/hosts and save it.
 172.17.0.3      node2
 172.20.0.110    CentOS
 ```
+You need to replace the IP Address of your RPS Lab machine for CentOS.
+
 Similarly append in node1
 ```
 ssh root@172.17.0.2
 vim /etc/hosts
+exit
 ```
 Make sure you append the below in the node1 /etc/hosts and save it.
 ```
@@ -101,6 +104,7 @@ Similarly append in node2
 ```
 ssh root@172.17.0.3
 vim /etc/hosts
+exit
 ```
 Make sure you append the below in the node2 /etc/hosts and save it.
 ```
@@ -180,7 +184,7 @@ end
 ```
 I gave 3 white spaces for indentation.
 
-Make sure the file is save before closing the text editor.
+Make sure the file is saved before closing the text editor.
 
 ### Let us verify if our system already has an user by name 'devops'
 ```
@@ -193,7 +197,7 @@ id: devops: no such user
 
 As you would have checked it yourself, currently there is no user by name 'devops' in RPS Lab machine.
 
-### Check if the recipe is error free with no syntax errors
+### Check if the recipe is error-free with no syntax errors
 ```
 cookstyle user.rb
 ```
@@ -234,7 +238,7 @@ chef-client --local-mode user.rb --why-run
 ```
 The expected output is
 <pre>
-[jegan@tektutor myrecipes]$ chef-client --local-mode user.rb --why-run
+[jegan@tektutor myrecipes]$<b> chef-client --local-mode user.rb --why-run</b>
 [2021-09-14T19:52:00-07:00] WARN: No config file found or specified on command line. Using command line options instead.
 [2021-09-14T19:52:00-07:00] WARN: No cookbooks directory found at or above current directory.  Assuming /home/jegan/Training/chef-sep-2021/Day2/myrecipes.
 Chef Infra Client, version 17.4.38
@@ -283,13 +287,13 @@ Running handlers complete
 Infra Phase complete, 1/1 resources updated in 05 seconds
 </pre>
 
-You may verify if the user is really created by type the below command(s)
+You may verify if the user is really created by typing the below command(s)
 ```
 id devops
 ```
 The expected output is
 <pre>
-[jegan@tektutor myrecipes]$ id devops
+[jegan@tektutor myrecipes]$ <b>id devops</b>
 uid=9999(devops) gid=9999(devops) groups=9999(devops)
 </pre>
 
@@ -330,6 +334,15 @@ Infra Phase complete, 0/1 resources updated in 05 seconds
 As you noticed, Chef didn't attempt to create the user 'devops' as the user already exists.
 
 Idempotency property of Chef ensures, Chef acts only when the current state of the machine is different from the desired state.  If the current state is inline with desired state, chef reports it is up to date and no action is taken.
+
+##### Notes
+During Cookplay execution, the Chef Infra client collects current state of the machine from the below
+
+-  JSON passed from command-line
+-  The data collected by OHAI
+-  The node object saved in the Chef Infra Server when cookbooks was executed previously.
+-  The rebuild node object is updated by Chef Infra Client when the cookbook is executed currently.
+-  At the end of Cookbook execution the final updated version of node object is saved in the Chef Infra Server.
 
 Let us try to delete the user using Linux command to see, how Chef responds after the user is deleted
 ```
@@ -471,13 +484,3 @@ sudo chef-client --local-mode webserver.rb --why-run
 sudo chef-client --local-mode webserver.rb
 curl localhost
 ```
-
-### Creating your first Chef cookbook
-
-Cleanup existing httpd installation
-```
-sudo yum remove httpd -y
-sudo rm -rf /var/www/html/index.html
-curl localhost
-```
-
