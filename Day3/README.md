@@ -238,12 +238,12 @@ knife node run_list add node2 "recipe[webserver]"
 
 The expected output is
 <pre>
-[jegan@workstation cookbooks]$<b>knife node run_list add node1 "recipe[webserver]"</b>
+[jegan@workstation cookbooks]$ <b>knife node run_list add node1 "recipe[webserver]"</b>
 node1:
   run_list:
     recipe[httpd]
     recipe[webserver]
-[jegan@workstation cookbooks]$<b>knife node run_list add node2 "recipe[webserver]"</b>
+[jegan@workstation cookbooks]$ <b>knife node run_list add node2 "recipe[webserver]"</b>
 node2:
   run_list:
     recipe[apache]
