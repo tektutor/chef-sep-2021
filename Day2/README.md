@@ -484,12 +484,3 @@ sudo chef-client --local-mode webserver.rb --why-run
 sudo chef-client --local-mode webserver.rb
 curl localhost
 ```
-
-### Creating your first Chef cookbook
-
-Cleanup existing httpd installation
-```
-sudo yum remove httpd -y
-sudo rm -rf /var/www/html/index.html
-curl localhost
-```
