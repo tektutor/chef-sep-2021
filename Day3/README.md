@@ -45,7 +45,32 @@ Your new Chef Infra repo is ready! Type `cd chef-repo` to enter it.
 </pre>
 
 ### Let us now write our first Chef Cookbook inside the chef-repo.
+
+So far we wrote individual Chef recipes but now it is time to write a Cookbook !
+
+Cookbook is nothing but a set of recipes called in a particular sequence.
+
 ```
 cd ~
-cd 
+cd Training/Day3/chef-repo
+chef generate cookbook webserver
+cd webserver/recipes
+vim default.rb
+```
+
+You may now append the below code in the default.rb file and save it.
+
+```
+package 'httpd' do
+  action :install
+end
+
+file '/var/www/html/index.html' do
+  content "<h1>Welcome to Httpd WebServer Landing Page !</h1>"
+  action :create
+end
+
+service 'httpd' do
+  action [:enable, :start]
+end
 ```
