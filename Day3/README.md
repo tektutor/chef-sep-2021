@@ -231,6 +231,11 @@ In case you need to remove a cookbook from the runlist of a node
 knife node run_list remove node1 "recipe[httpd]"
 ```
 
+Edit the runlist for a node
+```
+knife node edit node1
+```
+
 Let us add the webserver cookbook to the runlist of node1 and node2
 ```
 cd ~/Training/chef-sep-2021
