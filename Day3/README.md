@@ -287,3 +287,76 @@ Running handlers complete
 Infra Phase complete, 1/4 resources updated in 06 seconds
 [root@node1 ~]# 
 </pre>
+
+Repeat the same on node2 server as well
+
+```
+ssh root@node2
+chef-client
+```
+The expected output is
+<pre>
+root@node2:~# chef-client
+Chef Infra Client, version 17.4.38
+Patents: https://www.chef.io/patents
+Infra Phase starting
+Resolving cookbooks for run list: ["webserver"]
+Synchronizing cookbooks:
+  - webserver (0.1.0)
+Installing cookbook gem dependencies:
+Compiling cookbooks...
+Converging 3 resources
+Recipe: webserver::install-httpd
+  * apt_package[httpd] action install
+    
+    ================================================================================
+    Error executing action `install` on resource 'apt_package[httpd]'
+    ================================================================================
+    
+    Chef::Exceptions::Package
+    -------------------------
+    httpd is a virtual package provided by multiple packages, you must explicitly select one
+    
+    Resource Declaration:
+    ---------------------
+    # In /var/chef/cache/cookbooks/webserver/recipes/install-httpd.rb
+    
+      1: package 'httpd' do
+      2:   action :install
+      3: end
+    
+    Compiled Resource:
+    ------------------
+    # Declared in /var/chef/cache/cookbooks/webserver/recipes/install-httpd.rb:1:in `from_file'
+    
+    apt_package("httpd") do
+      package_name "httpd"
+      action [:install]
+      default_guard_interpreter :default
+      declared_type :package
+      cookbook_name "webserver"
+      recipe_name "install-httpd"
+    end
+    
+    System Info:
+    ------------
+    chef_version=17.4.38
+    platform=ubuntu
+    platform_version=20.04
+    ruby=ruby 3.0.2p107 (2021-07-07 revision 0db68f0233) [x86_64-linux]
+    program_name=/usr/bin/chef-client
+    executable=/opt/chef/bin/chef-client
+    
+
+Running handlers:
+[2021-09-15T23:05:06-07:00] ERROR: Running exception handlers
+Running handlers complete
+[2021-09-15T23:05:06-07:00] ERROR: Exception handlers complete
+Infra Phase failed. 0 resources updated in 03 seconds
+[2021-09-15T23:05:06-07:00] FATAL: Stacktrace dumped to /var/chef/cache/chef-stacktrace.out
+[2021-09-15T23:05:06-07:00] FATAL: ---------------------------------------------------------------------------------------
+[2021-09-15T23:05:06-07:00] FATAL: PLEASE PROVIDE THE CONTENTS OF THE stacktrace.out FILE (above) IF YOU FILE A BUG REPORT
+[2021-09-15T23:05:06-07:00] FATAL: ---------------------------------------------------------------------------------------
+[2021-09-15T23:05:06-07:00] FATAL: Chef::Exceptions::Package: apt_package[httpd] (webserver::install-httpd line 1) had an error: Chef::Exceptions::Package: httpd is a virtual package provided by multiple packages, you must explicitly select one
+root@node2:~# 
+</pre>
