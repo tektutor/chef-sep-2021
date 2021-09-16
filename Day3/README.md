@@ -101,8 +101,9 @@ service 'httpd' do
 end
 ```
 
-Let's run the cookbook locally as shown below
+Let's dry-run the cookbook locally as shown below from 'chef-repo' folder
 ```
+pwd
 sudo chef-client --local-mode cookbooks/webserver/recipes/default.rb --why-run
 ```
 <pre>
@@ -143,3 +144,68 @@ Running handlers complete
 Infra Phase complete, 2/4 resources would have been updated
 [jegan@tektutor chef-repo]$ 
 </pre>
+
+### RunList
+Runlist is a way we can control the order in which multiple recipes should be executed by the chef-client in a required order.
+
+Syntax looks as below
+```
+chef-client --runlist "recipe[Cookbook-Name::Recipe-Name]"
+chef-client --runlist "recipe[Cookbook-Name]
+chef-client --runlist "recipe[Cookbane-Name1::default],recipe[Cookbook-Name2::recipe-name]"
+```
+
+### Include Recipe
+We can break the larger recipe file with multiple resource calls into smaller moduler recipes with this feature.
+
+This helps us in writing modular, readable and easy to maintain recipes.
+
+Before refactoring default.rb
+```
+package 'httpd' do
+  action :install
+end
+
+file '/var/www/html/index.html' do
+  content "<h1>Welcome to Httpd WebServer Landing Page !</h1>"
+  action :create
+end
+
+service 'httpd' do
+  action [:enable, :start]
+end
+```
+
+After refactoring default.rb
+
+This is how the default.rb will look after refactoring
+```
+include_recipe 'webserver::install-httpd'
+include_recipe 'webserver::deploy-custom-html'
+include_recipe 'webserver::start-webserver'
+```
+
+The install-httpd.rb file will look as shown below
+```
+# Install httpd webserver in CentOS/RedHat Linux Family
+package 'httpd' do
+  action :install
+end
+```
+
+The deploy-custom-html.rb file will look as shown below
+```
+# Deploy the custom web page into httpd webserver
+file '/var/www/html/index.html' do
+  content "<h1>Welcome to Httpd WebServer Landing Page !</h1>"
+  action :create
+end
+```
+
+The start-webserver.rb file will look as shown below
+```
+# Start the httpd service
+service 'httpd' do
+  action [:enable, :start]
+end
+```
