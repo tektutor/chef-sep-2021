@@ -257,8 +257,8 @@ chef-client
 ```
 
 The expected output is
-'''
-[root@node1 ~]# chef-client
+<pre>
+[root@node1 ~]# <b>chef-client</b>
 Chef Infra Client, version 17.4.38
 Patents: https://www.chef.io/patents
 Infra Phase starting
@@ -285,7 +285,7 @@ Recipe: webserver::deploy-custom-html
     -		<h1>Our first Chef Cookbook !</h1>
     -	</body>
     -</html>
-    +<h1>Welcome to Httpd WebServer Landing Page !</h1>
+    +Welcome to Httpd WebServer Landing Page !
     - restore selinux security context
 Recipe: webserver::start-webserver
   * service[httpd] action enable (up to date)
@@ -295,4 +295,4 @@ Running handlers:
 Running handlers complete
 Infra Phase complete, 1/4 resources updated in 06 seconds
 [root@node1 ~]# 
-'''
+</pre>
