@@ -103,7 +103,7 @@ end
 
 Let's run the cookbook locally as shown below
 ```
-<b>sudo chef-client --local-mode cookbooks/webserver/recipes/default.rb --why-run</b>
+sudo chef-client --local-mode cookbooks/webserver/recipes/default.rb --why-run
 ```
 <pre>
 [jegan@tektutor chef-repo]$ pwd
