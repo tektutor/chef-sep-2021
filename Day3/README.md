@@ -276,15 +276,6 @@ Recipe: webserver::deploy-custom-html
     --- /var/www/html/index.html	2021-09-13 21:11:52.393761079 -0700
     +++ /var/www/html/.chef-index20210915-8629-lmcxe6.html	2021-09-15 22:56:56.340255112 -0700
     @@ -1,10 +1,2 @@
-    -<html>
-    -	<head>
-    -		<title>Welcome to Chef Training!</title>
-    -	</head>
-    -
-    -	<body>
-    -		<h1>Our first Chef Cookbook !</h1>
-    -	</body>
-    -</html>
     +Welcome to Httpd WebServer Landing Page !
     - restore selinux security context
 Recipe: webserver::start-webserver
