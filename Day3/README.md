@@ -209,3 +209,19 @@ service 'httpd' do
   action [:enable, :start]
 end
 ```
+
+Let us upload the cookbook to actual server
+```
+cd ~/Training/chef-sep-2021/Day3/chef-repo/cookbooks
+knife cookbook upload "webserver" --cookbook-path .
+```
+
+The expected output is
+<pre>
+[jegan@workstation cookbooks]$ ls
+example  README.md  webserver
+[jegan@workstation cookbooks]$ knife cookbook upload "webserver" --cookbook-path .
+Uploading webserver      [0.1.0]
+Uploaded 1 cookbook.
+</pre>
+
