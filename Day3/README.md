@@ -102,8 +102,10 @@ end
 ```
 
 Let's run the cookbook locally as shown below
-
 ```
+<b>sudo chef-client --local-mode cookbooks/webserver/recipes/default.rb --why-run</b>
+```
+<pre>
 [jegan@tektutor chef-repo]$ pwd
 <b>/home/jegan/Training/chef-sep-2021/Day3/chef-repo</b>
 [jegan@tektutor chef-repo]$ <b>sudo chef-client --local-mode cookbooks/webserver/recipes/default.rb --why-run</b>
@@ -140,4 +142,4 @@ Running handlers:
 Running handlers complete
 Infra Phase complete, 2/4 resources would have been updated
 [jegan@tektutor chef-repo]$ 
-```
+</pre>
