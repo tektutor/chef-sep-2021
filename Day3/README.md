@@ -100,3 +100,44 @@ service 'httpd' do
   action [:enable, :start]
 end
 ```
+
+Let's run the cookbook locally as shown below
+
+```
+[jegan@tektutor chef-repo]$ pwd
+<b>/home/jegan/Training/chef-sep-2021/Day3/chef-repo</b>
+[jegan@tektutor chef-repo]$ <b>sudo chef-client --local-mode cookbooks/webserver/recipes/default.rb --why-run</b>
+Chef Infra Client, version 17.4.38
+Patents: https://www.chef.io/patents
+Infra Phase starting
+Resolving cookbooks for run list: []
+Synchronizing cookbooks:
+Installing cookbook gem dependencies:
+Compiling cookbooks...
+[2021-09-15T19:17:01-07:00] WARN: Node tektutor has an empty run list.
+Converging 3 resources
+Recipe: @recipe_files::/home/jegan/Training/chef-sep-2021/Day3/chef-repo/cookbooks/webserver/recipes/default.rb
+  * dnf_package[httpd] action install (up to date)
+  * file[/var/www/html/index.html] action create
+    - Would update content in file /var/www/html/index.html from 8e6d94 to c6f989
+    --- /var/www/html/index.html	2021-09-15 06:18:51.577509829 -0700
+    +++ /tmp/.chef-index20210915-10067-94x2iq.html	2021-09-15 19:17:03.767345377 -0700
+    @@ -1,2 +1,2 @@
+    -Chef works!
+    +<h1>Welcome to Httpd WebServer Landing Page !</h1>
+    - Would restore selinux security context
+  * service[httpd] action enable
+    * Service status not available. Assuming a prior action would have installed the service.
+    * Assuming status of not running.
+     (up to date)
+  * service[httpd] action start
+    * Service status not available. Assuming a prior action would have installed the service.
+    * Assuming status of not running.
+    - Would start service service[httpd]
+[2021-09-15T19:17:03-07:00] WARN: In why-run mode, so NOT performing node save.
+
+Running handlers:
+Running handlers complete
+Infra Phase complete, 2/4 resources would have been updated
+[jegan@tektutor chef-repo]$ 
+```
