@@ -257,7 +257,7 @@ chef-client
 ```
 
 The expected output is
-<pre>
+'''
 [root@node1 ~]# chef-client
 Chef Infra Client, version 17.4.38
 Patents: https://www.chef.io/patents
@@ -295,4 +295,4 @@ Running handlers:
 Running handlers complete
 Infra Phase complete, 1/4 resources updated in 06 seconds
 [root@node1 ~]# 
-</pre>
+'''
