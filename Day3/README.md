@@ -48,16 +48,18 @@ Your new Chef Infra repo is ready! Type `cd chef-repo` to enter it.
 
 So far we wrote individual Chef recipes but now it is time to write a Cookbook !
 
-Cookbook is nothing but a set of recipes called in a particular sequence.
+Cookbook is nothing but a set of recipes invoked in a particular sequence.
 
 ```
 cd ~
-cd Training/Day3/chef-repo
+cd Training/Day3
+cd chef-repo/cookbooks
 chef generate cookbook webserver
 ```
 
 The expected output is
 <pre>
+[jegan@tektutor Day3]$ cd chef-repo/cookbooks
 [jegan@tektutor Day3]$ chef generate cookbook webserver
 Generating cookbook webserver
 - Ensuring correct cookbook content
@@ -74,8 +76,8 @@ test/integration/default/default_test.rb
 If you'd prefer to dive right in, the default recipe can be found at:
 
 recipes/default.rb
-
 </pre>
+
 Let us now get inside the Cookbook directory as shown below and edit the default.rb file under recipes folder.
 ```
 cd webserver/recipes
