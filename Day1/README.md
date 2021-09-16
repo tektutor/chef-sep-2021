@@ -293,42 +293,6 @@ The expected output is
 *default  jegan   ~/.chef/jegan.pem  https://server:443 
 </pre>
 
-### Creating a chef-repo in Workstation
-```
-cd ~
-chef generate repo chef-repo
-```
-The expected output is
-
-<pre>
-[jegan@tektutor ~]$ <b>chef generate repo chef-repo</b>
-+---------------------------------------------+
-            Chef License Acceptance
-
-Before you can continue, 3 product licenses
-must be accepted. View the license at
-https://www.chef.io/end-user-license-agreement/
-
-Licenses that need accepting:
-  * Chef Workstation
-  * Chef Infra Client
-  * Chef InSpec
-
-Do you accept the 3 product licenses (yes/no)?
-
-> <b>yes</b>
-
-Persisting 3 product licenses...
-✔ 3 product licenses persisted.
-
-+---------------------------------------------+
-Generating Chef Infra repo chef-repo
-- Ensuring correct Chef Infra repo file content
-
-Your new Chef Infra repo is ready! Type `cd chef-repo` to enter it.
-[jegan@tektutor ~]$ 
-</pre>
-
 ### Bootstrapping Node1
 The assumption is node1 is a Unix/Linux server with SSH Server up and running.
 ```
