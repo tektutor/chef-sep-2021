@@ -126,7 +126,7 @@ Recipe: @recipe_files::/home/jegan/Training/chef-sep-2021/Day3/chef-repo/cookboo
     +++ /tmp/.chef-index20210915-10067-94x2iq.html	2021-09-15 19:17:03.767345377 -0700
     @@ -1,2 +1,2 @@
     -Chef works!
-    +<h1>Welcome to Httpd WebServer Landing Page !</h1>
+    +<h5>Welcome to Httpd WebServer Landing Page !</h5>
     - Would restore selinux security context
   * service[httpd] action enable
     * Service status not available. Assuming a prior action would have installed the service.
