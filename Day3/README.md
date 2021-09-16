@@ -226,6 +226,11 @@ chef-client --runlist "recipe[Cookbook-Name]
 chef-client --runlist "recipe[Cookbane-Name1::default],recipe[Cookbook-Name2::recipe-name]"
 ```
 
+In case you need to remove a cookbook from the runlist of a node
+```
+knife node run_list remove node1 "recipe[httpd]"
+```
+
 Let us add the webserver cookbook to the runlist of node1 and node2
 ```
 cd ~/Training/chef-sep-2021
