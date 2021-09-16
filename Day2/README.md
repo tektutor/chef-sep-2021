@@ -336,14 +336,14 @@ As you noticed, Chef didn't attempt to create the user 'devops' as the user alre
 Idempotency property of Chef ensures, Chef acts only when the current state of the machine is different from the desired state.  If the current state is inline with desired state, chef reports it is up to date and no action is taken.
 
 ##### Notes
-<b>
 During Cookplay execution, the Chef Infra client collects current state of the machine
-1. JSON passed from command-line
-2. The data collected by OHAI
-3. The node object saved in the Chef Infra Server when cookbooks was executed previously.
-4. The rebuild node object is updated by Chef Infra Server when the cookbook is executed currently.
-5. At the end of Cookbook execution the final updated version of node object is saved in the Chef Infra Server.
-</b>
+
+-  JSON passed from command-line
+-  The data collected by OHAI
+-  The node object saved in the Chef Infra Server when cookbooks was executed previously.
+-  The rebuild node object is updated by Chef Infra Server when the cookbook is executed currently.
+-  At the end of Cookbook execution the final updated version of node object is saved in the Chef Infra Server.
+
 
 Let us try to delete the user using Linux command to see, how Chef responds after the user is deleted
 ```
