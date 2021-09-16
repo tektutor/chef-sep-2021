@@ -249,3 +249,50 @@ node2:
     recipe[apache]
     recipe[webserver]
 </pre>
+
+We need to go to Node1 and manually run the chef-client as root user
+```
+ssh root@node1
+chef-client
+```
+
+The expected output is
+<pre>
+[root@node1 ~]# chef-client
+Chef Infra Client, version 17.4.38
+Patents: https://www.chef.io/patents
+Infra Phase starting
+Resolving cookbooks for run list: ["webserver"]
+Synchronizing cookbooks:
+  - webserver (0.1.0)
+Installing cookbook gem dependencies:
+Compiling cookbooks...
+Converging 3 resources
+Recipe: webserver::install-httpd
+  * dnf_package[httpd] action install (up to date)
+Recipe: webserver::deploy-custom-html
+  * file[/var/www/html/index.html] action create
+    - update content in file /var/www/html/index.html from f9f91f to c6f989
+    --- /var/www/html/index.html	2021-09-13 21:11:52.393761079 -0700
+    +++ /var/www/html/.chef-index20210915-8629-lmcxe6.html	2021-09-15 22:56:56.340255112 -0700
+    @@ -1,10 +1,2 @@
+    -<html>
+    -	<head>
+    -		<title>Welcome to Chef Training!</title>
+    -	</head>
+    -
+    -	<body>
+    -		<h1>Our first Chef Cookbook !</h1>
+    -	</body>
+    -</html>
+    +<h1>Welcome to Httpd WebServer Landing Page !</h1>
+    - restore selinux security context
+Recipe: webserver::start-webserver
+  * service[httpd] action enable (up to date)
+  * service[httpd] action start (up to date)
+
+Running handlers:
+Running handlers complete
+Infra Phase complete, 1/4 resources updated in 06 seconds
+[root@node1 ~]# 
+</pre>
