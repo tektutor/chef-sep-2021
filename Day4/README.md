@@ -206,3 +206,69 @@ The expected output is
 [jegan@workstation Day4]$ knife environment create PROD
 Created PROD
 </pre>
+
+#### Let us update the environment in nodes1
+```
+knife node edit node1
+```
+Update environment from _default to PROD.
+The expected output is
+<pre>
+[jegan@workstation Day4]$ knife node edit node1
+Saving updated chef_environment on node node1
+</pre>
+
+#### Let us update the environment in nodes2
+```
+knife node edit node2
+```
+Update environment from _default to PROD.
+The expected output is
+<pre>
+[jegan@workstation Day4]$ knife node edit node2
+Saving updated chef_environment on node node2
+</pre>
+
+#### Let us update the environment in nodes3
+```
+knife node edit node3
+```
+Update environment from _default to QA.
+The expected output is
+<pre>
+[jegan@workstation Day4]$ knife node edit node3
+Saving updated chef_environment on node node3
+</pre>
+
+#### Let us update the environment in nodes4
+```
+knife node edit node4
+```
+Update environment from _default to QA.
+The expected output is
+<pre>
+[jegan@workstation Day4]$ knife node edit node4
+Saving updated chef_environment on node node4
+</pre>
+
+#### Let us update the environment in nodes5
+```
+knife node edit node5
+```
+Update environment from _default to DEV.
+The expected output is
+<pre>
+[jegan@workstation Day4]$ knife node edit node5
+Saving updated chef_environment on node node5
+</pre>
+
+#### Let us update the environment in nodes6
+```
+knife node edit node6
+```
+Update environment from _default to PROD.
+The expected output is
+<pre>
+[jegan@workstation Day4]$ knife node edit node6
+Saving updated chef_environment on node node6
+</pre>
