@@ -169,3 +169,8 @@ node5:
 node6:
   name: node6
 </pre>
+
+### Find all nodes that has both frontend and backend roles
+```
+knife search "role:frontend AND role:backend" -a name
+```
