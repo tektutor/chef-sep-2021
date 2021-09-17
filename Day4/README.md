@@ -81,6 +81,32 @@ knife node edit node4
 }
 </pre>
 
+### Adding multiple roles to a single node(node 5)
+```
+knife node edit node5
+```
+
+Add both roles to node5 as shown below
+
+<pre>
+{
+  "name": "node5",
+  "chef_environment": "_default",
+  "normal": {
+    "tags": [
+
+    ]
+  },
+  "policy_name": null,
+  "policy_group": null,
+  "run_list": [
+  "role[frontend]",
+  "role[backend]"
+]
+
+}
+</pre>
+
 #### Adding multiples roles to a single node 
 ```
 knife node edit node6
