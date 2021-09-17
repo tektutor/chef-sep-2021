@@ -21,160 +21,6 @@ Run chef-client on all nodes
 knife ssh 'name:*' 'sudo chef-client'
 ```
 
-### Chef Roles
-
-#### Creating Roles
-```
-cd ~/Training/chef-sep-2021
-git pull
-cd Day4/chef-repo/roles
-
-knife role from file frontend-role.rb
-knife role from file backend-role.rb
-```
-
-#### Assiging Role(s) to nodes
-```
-knife node edit node3
-```
-You need to add the "role[frontend]" in the run_list of the node3 as highlighted below.
-
-<pre>
-{
-  "name": "node3",
-  "chef_environment": "_default",
-  "normal": {
-    "tags": [
-
-    ]
-  },
-  "policy_name": null,
-  "policy_group": null,
-  "run_list": [
-  <b>"role[frontend]"</b>
-]
-
-}
-
-</pre>
-
-Similary add role(s) to node4
-```
-knife node edit node4
-```
-
-<pre>
-{
-  "name": "node4",
-  "chef_environment": "_default",
-  "normal": {
-    "tags": [
-
-    ]
-  },
-  "policy_name": null,
-  "policy_group": null,
-  "run_list": [
-  <b>"role[backend]"</b>
-]
-
-}
-</pre>
-
-### Adding multiple roles to a single node(node 5)
-```
-knife node edit node5
-```
-
-Add both roles to node5 as shown below
-
-<pre>
-{knife search "role:frontend" -a name
-  "name": "node5",
-  "chef_environment": "_default",
-  "normal": {
-    "tags": [
-
-    ]
-  },
-  "policy_name": null,
-  "policy_group": null,
-  "run_list": [
-  <b>"role[frontend]",
-  "role[backend]"</b>
-]
-
-}
-</pre>
-
-#### Adding multiples roles to a single node 
-```
-knife node edit node6
-```
-
-Add both roles to node6 as shown below
-<pre>
-
-  "name": "node6",
-  "chef_environment": "_default",
-  "normal": {
-    "tags": [
-
-    ]
-  },
-  "policy_name": null,
-  "policy_group": null,
-  "run_list": [
-  <b>"role[frontend]",
-  "role[backend]"</b>
-]
-
-}
-</pre>
-
-### Find all nodes that has frontend role
-```
-knife search "role:frontend" -a name
-```
-The expected output is
-<pre>
-[jegan@workstation Day4]$ knife search "role:frontend" -a name
-3 items found
-
-node3:
-  name: node3
-
-node5:
-  name: node5
-
-node6:
-  name: node6
-</pre>
-
-### Find all nodes that has backend role
-```
-knife search "role:backend" -a name
-```
-The expected output is
-<pre>
-[jegan@workstation Day4]$ knife search "role:backend" -a name
-3 items found
-
-node4:
-  name: node4
-
-node5:
-  name: node5
-
-node6:
-  name: node6
-</pre>
-
-### Find all nodes that has both frontend and backend roles
-```
-knife search "role:frontend AND role:backend" -a name
-```
-
 ### Let's create DEV,QA and PROD environments
 
 #### Creating DEV environment
@@ -266,9 +112,268 @@ Saving updated chef_environment on node node5
 ```
 knife node edit node6
 ```
-Update environment from _default to PROD.
+Update environment from _default to DEV.
 The expected output is
 <pre>
 [jegan@workstation Day4]$ knife node edit node6
 Saving updated chef_environment on node node6
+</pre>
+
+### Chef Roles
+
+#### Creating Roles
+```
+cd ~/Training/chef-sep-2021
+git pull
+cd Day4/chef-repo/roles
+
+knife role from file frontend-role.rb
+knife role from file backend-role.rb
+```
+
+#### Assiging Role(s) to nodes
+
+#### Let's us start with PROD environment
+```
+knife node edit node1
+```
+You need to add the "role[frontend]" in the run_list of the node1 as highlighted below.
+
+<pre>
+{
+  "name": "node1",
+  "chef_environment": "PROD",
+  "normal": {
+    "tags": [
+
+    ]
+  },
+  "policy_name": null,
+  "policy_group": null,
+  "run_list": [
+  <b>"role[frontend]"</b>
+]
+
+}
+
+</pre>
+
+Similary add role(s) to node2
+```
+knife node edit node2
+```
+
+<pre>
+{
+  "name": "node2",
+  "chef_environment": "PROD",
+  "normal": {
+    "tags": [
+
+    ]
+  },
+  "policy_name": null,
+  "policy_group": null,
+  "run_list": [
+  <b>"role[backend]"</b>
+]
+
+}
+</pre>
+
+#### Let's us update role in QA environment
+
+```
+knife node edit node3
+```
+You need to add the "role[frontend]" in the run_list of the node3 as highlighted below.
+
+<pre>
+{
+  "name": "node3",
+  "chef_environment": "QA",
+  "normal": {
+    "tags": [
+
+    ]
+  },
+  "policy_name": null,
+  "policy_group": null,
+  "run_list": [
+  <b>"role[frontend]"</b>
+]
+
+}
+
+</pre>
+
+Similary add role(s) to node4
+```
+knife node edit node4
+```
+
+<pre>
+{
+  "name": "node4",
+  "chef_environment": "PROD",
+  "normal": {
+    "tags": [
+
+    ]
+  },
+  "policy_name": null,
+  "policy_group": null,
+  "run_list": [
+  <b>"role[backend]"</b>
+]
+
+}
+</pre>
+
+### Adding multiple roles to a single node(node 5)
+```
+knife node edit node5
+```
+
+Add both roles to node5 as shown below
+
+<pre>
+{knife search "role:frontend" -a name
+  "name": "node5",
+  "chef_environment": "DEV",
+  "normal": {
+    "tags": [
+
+    ]
+  },
+  "policy_name": null,
+  "policy_group": null,
+  "run_list": [
+  <b>"role[frontend]",
+  "role[backend]"</b>
+]
+
+}
+</pre>
+
+#### Adding multiples roles to a single node(node6) 
+```
+knife node edit node6
+```
+
+Add both roles to node6 as shown below
+<pre>
+
+  "name": "node6",
+  "chef_environment": "DEV",
+  "normal": {
+    "tags": [
+
+    ]
+  },
+  "policy_name": null,
+  "policy_group": null,
+  "run_list": [
+  <b>"role[frontend]",
+  "role[backend]"</b>
+]
+
+}
+</pre>
+
+### Find all nodes that has frontend role and belong to DEV environment
+```
+knife search "role:frontend AND chef_environment:DEV" -a name
+```
+The expected output is
+<pre>
+[jegan@workstation Day4]$<b>knife search "role:frontend AND chef_environment:DEV" -a name</b>
+2 items found
+
+node5:
+  name: node5
+
+node6:
+  name: node6
+</pre>
+
+### Find all nodes that has backend role and belong to DEV environment
+```
+knife search "role:backend AND chef_environment:DEV" -a name
+```
+The expected output is
+<pre>
+[jegan@workstation Day4]$ knife search "role:backend AND chef_environment:DEV" -a name
+2 items found
+
+node5:
+  name: node5
+
+node6:
+  name: node6
+</pre>
+
+### Find all nodes that has both frontend and backend roles
+```
+knife search "role:frontend AND role:backend" -a name
+```
+The expected output is
+<pre>
+node5:
+  name: node5
+
+node6:
+  name: node6
+</pre>
+
+### Find all QA environment nodes that has frontend role 
+```
+knife search "role:frontend AND chef_environment:QA" -a name
+```
+The expected output is
+<pre>
+[jegan@workstation Day4]$<b>knife search "role:frontend AND chef_environment:QA" -a name</b>
+1 items found
+
+node3:
+  name: node3
+</pre>
+
+### Find all QA environment nodes that has backend role
+```
+knife search "role:backend AND chef_environment:QA" -a name
+```
+The expected output is
+<pre>
+jegan@workstation Day4]$ knife search "role:backend AND chef_environment:QA" -a name
+1 items found
+
+node4:
+  name: node4
+</pre>
+
+### Find all PROD environment nodes that has frontend role
+```
+knife search "role:frontend AND chef_environment:PROD" -a name
+```
+The expected output is
+<pre>
+[jegan@workstation Day4]$<b>knife search "role:frontend AND chef_environment:PROD" -a name</b>
+1 items found
+
+node1:
+  name: node1
+</pre>
+
+### Find all PROD environment nodes that has backend role
+```
+knife search "role:backend AND chef_environment:PROD" -a name
+```
+The expected output is
+<pre>
+[jegan@workstation Day4]$ knife search "role:backend AND chef_environment:PROD" -a name
+1 items found
+
+node2:
+  name: node2
 </pre>
