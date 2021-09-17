@@ -100,8 +100,8 @@ Add both roles to node5 as shown below
   "policy_name": null,
   "policy_group": null,
   "run_list": [
-  "role[frontend]",
-  "role[backend]"
+  <b>"role[frontend]",
+  "role[backend]"</b>
 ]
 
 }
