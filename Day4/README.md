@@ -57,3 +57,51 @@ You need to add the "role[frontend]" in the run_list of the node3 as highlighted
 }
 
 </pre>
+
+Similary add role(s) to node4
+```
+knife node edit node4
+```
+
+<pre>
+{
+  "name": "node4",
+  "chef_environment": "_default",
+  "normal": {
+    "tags": [
+
+    ]
+  },
+  "policy_name": null,
+  "policy_group": null,
+  "run_list": [
+  <b>"role[backend]"</b>
+]
+
+}
+</pre>
+
+#### Adding multiples roles to a single node 
+```
+knife node edit node6
+```
+
+Add both roles to node6 as shown below
+<pre>
+
+  "name": "node6",
+  "chef_environment": "_default",
+  "normal": {
+    "tags": [
+
+    ]
+  },
+  "policy_name": null,
+  "policy_group": null,
+  "run_list": [
+  <b>"role[frontend]",
+  "role[backend]"</b>
+]
+
+}
+</pre>
