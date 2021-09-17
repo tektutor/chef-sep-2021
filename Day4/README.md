@@ -89,7 +89,7 @@ knife node edit node5
 Add both roles to node5 as shown below
 
 <pre>
-{
+{knife search "role:frontend" -a name
   "name": "node5",
   "chef_environment": "_default",
   "normal": {
@@ -130,4 +130,42 @@ Add both roles to node6 as shown below
 ]
 
 }
+</pre>
+
+### Find all nodes that has frontend role
+```
+knife search "role:frontend" -a name
+```
+The expected output is
+<pre>
+[jegan@workstation Day4]$ knife search "role:frontend" -a name
+3 items found
+
+node3:
+  name: node3
+
+node5:
+  name: node5
+
+node6:
+  name: node6
+</pre>
+
+### Find all nodes that has backend role
+```
+knife search "role:backend" -a name
+```
+The expected output is
+<pre>
+[jegan@workstation Day4]$ knife search "role:backend" -a name
+3 items found
+
+node4:
+  name: node4
+
+node5:
+  name: node5
+
+node6:
+  name: node6
 </pre>
