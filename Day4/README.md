@@ -174,3 +174,35 @@ node6:
 ```
 knife search "role:frontend AND role:backend" -a name
 ```
+
+### Let's create DEV,QA and PROD environments
+
+#### Creating DEV environment
+```
+knife environment create DEV
+```
+The expected output is
+<pre>
+[jegan@workstation Day4]$ knife environment create DEV
+Created DEV
+</pre>
+
+#### Creating QA environment
+```
+knife environment create QA
+```
+The expected output is
+<pre>
+[jegan@workstation Day4]$ knife environment create QA
+Created QA
+</pre>
+
+#### Creating PROD environment
+```
+knife environment create PROD
+```
+The expected output is
+<pre>
+[jegan@workstation Day4]$ knife environment create PROD
+Created PROD
+</pre>
