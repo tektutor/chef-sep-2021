@@ -381,7 +381,7 @@ node2:
 ### Databag
 - is a way one or more cookbooks can access global data
 - if required the data stored in data bag can be encrypted and accessed securely from cookbooks
-- data bags are stored in Chef Infra Server as opposed to credential files stored in GitHub(insecure)
+- data bags are stored in Chef Infra Server as opposed to credential files stored in plain text @ GitHub(insecure)
 
 #### Creating a data bag
 ```
