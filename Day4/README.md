@@ -287,7 +287,7 @@ knife search "role:frontend AND chef_environment:DEV" -a name
 ```
 The expected output is
 <pre>
-[jegan@workstation Day4]$<b>knife search "role:frontend AND chef_environment:DEV" -a name</b>
+[jegan@workstation Day4]$ <b>knife search "role:frontend AND chef_environment:DEV" -a name</b>
 2 items found
 
 node5:
