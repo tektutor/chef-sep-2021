@@ -640,15 +640,34 @@ node1 Infra Phase complete, 2/3 resources updated in 04 seconds
 ```
 cd ~/Training/chef-sep-2021
 git pull
+cd Day4/chef-repo/cookbooks
 
-cd Day4/chef-repo
+chef generate cookbook demo -b
 ```
+As of now Berkshelf tool has generated a Berksfile in our demo cookbook under cookbooks folder and then file looks as below
+<pre>
+source 'https://supermarket.chef.io'
 
-The Berksfile looks as shown below
+metadata
+</pre>
+
+You need to edit the Berksfile and append the highlighted line and save it
 <pre>
 source "https://supermarket.chef.io"
 metadata
-cookbook "apt" , "~> 5.0" , "https://supermarket.chef.io" 
+<b>cookbook "apt" , "~> 5.0" , "https://supermarket.chef.io"</b> 
+</pre>
+
+The next step is to edit the metadata.rb file of sample cookbook as shown below
+<pre>
+name 'demo'
+maintainer 'The Authors'
+maintainer_email 'you@example.com'
+license 'All Rights Reserved'
+description 'Installs/Configures demo'
+version '1.0.0'
+chef_version '>= 16.0'
+<b>depends 'apt', '~> 5.0'</b>
 </pre>
 
 ### Uploading your cookbook with its dependencies
