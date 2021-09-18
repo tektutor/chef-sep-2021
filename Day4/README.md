@@ -770,3 +770,10 @@ As you can see above in the highlighted section, the apt cookbook also got downl
 https://docs.chef.io/workstation/kitchen/#:~:text=kitchen%20is%20the%20command%2Dline,any%20combination%20of%20test%20suites.
 
 https://github.com/test-kitchen/kitchen-docker
+
+### Chef Automate
+- is an enterprise platform that allows developers, operations and security engineers to 
+  collaborate effortlessly on delivering application & infrastructure changes at the speed of business. 
+- provides actionable insights with enterprise scale and performance across multiple data centers and 
+  cloud providers.
+- Operational observability for every team in one place. 
