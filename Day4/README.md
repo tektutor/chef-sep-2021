@@ -565,12 +565,12 @@ node1     - update content in file /tmp/credentials.txt from 68fc22 to db4c52
 node1     --- /tmp/credentials.txt	2021-09-18 05:29:57.057261818 +0530
 node1     +++ /tmp/.chef-credentials20210918-9974-j1jsa8.txt	2021-09-18 06:01:52.183906898 +0530
 node1     @@ -1,6 +1,6 @@
-node1     -MySQL Username  ==> admin
+node1     <b>-MySQL Username  ==> admin
 node1     +MySQL Username  ==> mysql_admin
 node1      MySQL Password  ==> admin@123
 node1      Oracle Username ==> oracle_admin
 node1     -Oracle Password ==> admin@123
-node1     +Oracle Password ==> pass@123
+node1     +Oracle Password ==> pass@123</b>
 node1      
 node1     - restore selinux security context
 node1 
