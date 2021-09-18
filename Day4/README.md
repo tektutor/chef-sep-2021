@@ -755,3 +755,5 @@ node1
 node1 Infra Phase complete, 1/3 resources updated in 05 seconds
 [jegan@workstation chef-repo]$ 
 </pre>
+
+As you can see above in the highlighted section, the apt cookbook also got downloaded from the Chef Infra Server when we ran our sample cookbook. 
