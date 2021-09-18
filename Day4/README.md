@@ -759,3 +759,14 @@ node1 Infra Phase complete, 1/3 resources updated in 05 seconds
 </pre>
 
 As you can see above in the highlighted section, the apt cookbook also got downloaded from the Chef Infra Server when we ran our sample cookbook. 
+
+### Test Kitchen
+
+- Test Kitchen let's us test our cookbook in various Platforms (Operating Systems)
+- Test Kitchen can provision a system using VMWare, VirtualBox, AWS, GCP, Azure or even Docker to 
+  verify your cookbooks.
+  
+#### References
+https://docs.chef.io/workstation/kitchen/#:~:text=kitchen%20is%20the%20command%2Dline,any%20combination%20of%20test%20suites.
+
+https://github.com/test-kitchen/kitchen-docker
