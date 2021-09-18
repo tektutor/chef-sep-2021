@@ -4,13 +4,13 @@
 # https://docs.chef.io/policyfile/
 
 # A name that describes what the system you're building with Chef does.
-name 'wordpress'
+name 'demo'
 
 # Where to find external cookbooks:
 default_source :supermarket
 
 # run_list: chef-client will run these recipes in the order specified.
-run_list 'wordpress::default'
+run_list 'demo::default'
 
 # Specify a custom source for a single cookbook:
-cookbook 'wordpress', path: '.'
+cookbook 'demo', path: '.'

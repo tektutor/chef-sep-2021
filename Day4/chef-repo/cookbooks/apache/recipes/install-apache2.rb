@@ -1,4 +1,5 @@
 package 'Install Apache' do
+  action :install
   case node['platform']
   when 'centos'
     package_name 'httpd'
