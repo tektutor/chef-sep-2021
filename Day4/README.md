@@ -705,6 +705,8 @@ Uploaded apt (5.1.0) to: 'https://server:443/organizations/tektutor'
 Uploaded demo (1.0.0) to: 'https://server:443/organizations/tektutor'
 </pre>
 
+Did you notice that the apt (5.1.0) cookbook automatically was uploaded along with our demo cookbook by the Berkshell dependency Manager tool.
+
 ### Running the cookbook in the node
 ```
 cd ~/Training/chef-sep-2021/Day4/chef-repo
