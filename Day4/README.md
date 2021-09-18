@@ -636,6 +636,21 @@ node1 Infra Phase complete, 2/3 resources updated in 04 seconds
   the dependencies of your cookbook so that they also will be downloaded from the Chef Infra Server to the node 
   before executing your cookbook.
 
+### Let's create a Berksfile to so that Berkshell tool can manage our cookbook dependency
+```
+cd ~/Training/chef-sep-2021
+git pull
+
+cd Day4/chef-repo
+```
+
+The Berksfile looks as shown below
+<pre>
+source "https://supermarket.chef.io"
+metadata
+cookbook "apt" , "~> 5.0" , "https://supermarket.chef.io" 
+</pre>
+
 ### Uploading your cookbook with its dependencies
 
 ```
