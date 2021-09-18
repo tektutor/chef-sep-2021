@@ -29,7 +29,7 @@ knife environment create DEV
 ```
 The expected output is
 <pre>
-[jegan@workstation Day4]$ knife environment create DEV
+[jegan@workstation Day4]$ <b>knife environment create DEV</b>
 Created DEV
 </pre>
 
@@ -39,7 +39,7 @@ knife environment create QA
 ```
 The expected output is
 <pre>
-[jegan@workstation Day4]$ knife environment create QA
+[jegan@workstation Day4]$ <b>knife environment create QA</b>
 Created QA
 </pre>
 
@@ -49,7 +49,7 @@ knife environment create PROD
 ```
 The expected output is
 <pre>
-[jegan@workstation Day4]$ knife environment create PROD
+[jegan@workstation Day4]$<b> knife environment create PROD</b>
 Created PROD
 </pre>
 
@@ -60,7 +60,7 @@ knife node edit node1
 Update environment from _default to PROD.
 The expected output is
 <pre>
-[jegan@workstation Day4]$ knife node edit node1
+[jegan@workstation Day4]$ <b>knife node edit node1</b>
 Saving updated chef_environment on node node1
 </pre>
 
@@ -71,7 +71,7 @@ knife node edit node2
 Update environment from _default to PROD.
 The expected output is
 <pre>
-[jegan@workstation Day4]$ knife node edit node2
+[jegan@workstation Day4]$<b> knife node edit node2</b>
 Saving updated chef_environment on node node2
 </pre>
 
@@ -82,7 +82,7 @@ knife node edit node3
 Update environment from _default to QA.
 The expected output is
 <pre>
-[jegan@workstation Day4]$ knife node edit node3
+[jegan@workstation Day4]$ <b>knife node edit node3</b>
 Saving updated chef_environment on node node3
 </pre>
 
@@ -93,7 +93,7 @@ knife node edit node4
 Update environment from _default to QA.
 The expected output is
 <pre>
-[jegan@workstation Day4]$ knife node edit node4
+[jegan@workstation Day4]$<b> knife node edit node4</b>
 Saving updated chef_environment on node node4
 </pre>
 
@@ -104,7 +104,7 @@ knife node edit node5
 Update environment from _default to DEV.
 The expected output is
 <pre>
-[jegan@workstation Day4]$ knife node edit node5
+[jegan@workstation Day4]$ <b>knife node edit node5</b>
 Saving updated chef_environment on node node5
 </pre>
 
@@ -115,7 +115,7 @@ knife node edit node6
 Update environment from _default to DEV.
 The expected output is
 <pre>
-[jegan@workstation Day4]$ knife node edit node6
+[jegan@workstation Day4]$<b> knife node edit node6</b>
 Saving updated chef_environment on node node6
 </pre>
 
@@ -287,7 +287,7 @@ knife search "role:frontend AND chef_environment:DEV" -a name
 ```
 The expected output is
 <pre>
-[jegan@workstation Day4]$<b>knife search "role:frontend AND chef_environment:DEV" -a name</b>
+[jegan@workstation Day4]$ <b>knife search "role:frontend AND chef_environment:DEV" -a name</b>
 2 items found
 
 node5:
@@ -381,7 +381,7 @@ node2:
 ### Databag
 - is a way one or more cookbooks can access global data
 - if required the data stored in data bag can be encrypted and accessed securely from cookbooks
-- data bags are stored in Chef Infra Server as opposed to credential files stored in GitHub(insecure)
+- data bags are stored in Chef Infra Server as opposed to credential files stored in plain text @ GitHub(insecure)
 
 #### Creating a data bag
 ```
@@ -526,6 +526,49 @@ password:  pass@123
 username:  oracle_admin
 </pre>
 
+
+### Let us access mysql credential stored into our databag using knife
+```
+cd ~/Training/chef-sep-2021
+git pull
+cd Day4/chef-repo
+
+knife search credentials "id:mysql"
+```
+The expected output is
+<pre>
+jegan@workstation chef-sep-2021]$<b> knife search credentials "id:mysql"</b>
+1 items found
+
+chef_type: data_bag_item
+comment:   MYSQL Server Credentials
+data_bag:  credentials
+id:        mysql
+password:  admin@123
+username:  mysql_admin
+</pre>
+
+### Let us access oracle credential stored into our databag using knife
+```
+cd ~/Training/chef-sep-2021
+git pull
+cd Day4/chef-repo
+
+knife search credentials "id:oracle"
+```
+The expected output is
+<pre>
+[jegan@workstation chef-sep-2021]$ knife search credentials "id:oracle"
+1 items found
+
+chef_type: data_bag_item
+comment:   Oracle Server Credentials
+data_bag:  credentials
+id:        oracle
+password:  pass@123
+username:  oracle_admin
+</pre>
+
 ### Let us access the credentials of mysql and oracle db servers stored into our databag from cookbook
 ```
 cd ~/Training/chef-sep-2021
@@ -565,12 +608,12 @@ node1     - update content in file /tmp/credentials.txt from 68fc22 to db4c52
 node1     --- /tmp/credentials.txt	2021-09-18 05:29:57.057261818 +0530
 node1     +++ /tmp/.chef-credentials20210918-9974-j1jsa8.txt	2021-09-18 06:01:52.183906898 +0530
 node1     @@ -1,6 +1,6 @@
-node1     -MySQL Username  ==> admin
+node1     <b>-MySQL Username  ==> admin
 node1     +MySQL Username  ==> mysql_admin
 node1      MySQL Password  ==> admin@123
 node1      Oracle Username ==> oracle_admin
 node1     -Oracle Password ==> admin@123
-node1     +Oracle Password ==> pass@123
+node1     +Oracle Password ==> pass@123</b>
 node1      
 node1     - restore selinux security context
 node1 
