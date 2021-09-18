@@ -777,3 +777,13 @@ https://github.com/test-kitchen/kitchen-docker
 - provides actionable insights with enterprise scale and performance across multiple data centers and 
   cloud providers.
 - Operational observability for every team in one place. 
+
+#### Chef Automate Reference
+https://www.chef.io/products/chef-automate#:~:text=Chef%20Automate%20is%20an%20enterprise,at%20the%20speed%20of%20business.
+
+### Chef Enterprise
+Chef Enterprise Automation Stack (EAS) is an automation platform for DevSecOps teams to build, deploy, manage, and secure any application running on any infrastructure:
+
+- Align teams via a common set of tools and processes
+- Embed compliance testing in every stage of the technology lifecycle
+- Enable consistency, velocity, and security in application delivery to any infrastructure
