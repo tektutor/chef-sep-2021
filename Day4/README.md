@@ -525,3 +525,57 @@ id:        oracle
 password:  pass@123
 username:  oracle_admin
 </pre>
+
+### Let us access the credentials of mysql and oracle db servers stored into our databag from cookbook
+```
+cd ~/Training/chef-sep-2021
+git pull
+cd Day4/chef-repo
+
+knife cookbook upload demo
+knife node run_list add node1 "recipe[demo]"
+knife ssh 'name:node1' 'sudo chef-client'
+```
+
+The expected output is
+<pre>
+[jegan@workstation chef-repo]$ knife cookbook upload demo
+Uploading demo           [0.1.0]
+Uploaded 1 cookbook.
+[jegan@workstation chef-repo]$ knife ssh 'name:node1' 'sudo chef-client'
+jegan@node1's password:
+node1 knife sudo password: 
+Enter your password:  
+node1 
+node1 Chef Infra Client, version 17.4.38
+node1 Patents: https://www.chef.io/patents
+node1 Infra Phase starting
+node1 Resolving cookbooks for run list: ["demo"]
+node1 Synchronizing cookbooks:
+node1   - demo (0.1.0)
+node1 Installing cookbook gem dependencies:
+node1 Compiling cookbooks...
+node1 Converging 3 resources
+node1 Recipe: demo::default
+node1   * execute[get-hostname] action run
+node1     - execute hostname
+node1   * log[name] action write
+node1   * template[/tmp/credentials.txt] action create
+node1     - update content in file /tmp/credentials.txt from 68fc22 to db4c52
+node1     --- /tmp/credentials.txt	2021-09-18 05:29:57.057261818 +0530
+node1     +++ /tmp/.chef-credentials20210918-9974-j1jsa8.txt	2021-09-18 06:01:52.183906898 +0530
+node1     @@ -1,6 +1,6 @@
+node1     -MySQL Username  ==> admin
+node1     +MySQL Username  ==> mysql_admin
+node1      MySQL Password  ==> admin@123
+node1      Oracle Username ==> oracle_admin
+node1     -Oracle Password ==> admin@123
+node1     +Oracle Password ==> pass@123
+node1      
+node1     - restore selinux security context
+node1 
+node1 Running handlers:
+node1 Running handlers complete
+node1 Infra Phase complete, 2/3 resources updated in 04 seconds
+[jegan@workstation chef-repo]$ 
+</pre>
