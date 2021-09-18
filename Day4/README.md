@@ -377,3 +377,205 @@ The expected output is
 node2:
   name: node2
 </pre>
+
+### Databag
+- is a way one or more cookbooks can access global data
+- if required the data stored in data bag can be encrypted and accessed securely from cookbooks
+- data bags are stored in Chef Infra Server as opposed to credential files stored in GitHub(insecure)
+
+#### Creating a data bag
+```
+cd ~/Training/chef-sep-2021
+git pull
+cd Day4/chef-repo
+mkdir -p data_bags/credentials
+```
+
+#### Let us add mysql db server credentials there
+Create a file mysql.json under Day4/chef-repo/data_bags/credentials folder
+```
+vim mysql.json
+```
+Append the below content in the file and save it.
+```
+{
+  "id": "mysql",
+  "comment": "MYSQL Server Credentials",
+  "username": "mysql_admin",
+  "password": "admin@123"
+}
+```
+The expected output is
+<pre>
+[jegan@workstation chef-repo]$ mkdir -p data_bags/credentials
+[jegan@workstation chef-repo]$ touch data_bags/credentials/mysql.json
+[jegan@workstation chef-repo]$ touch data_bags/credentials/oracle.json
+[jegan@workstation chef-repo]$ vim data_bags/credentials/mysql.json 
+[jegan@workstation chef-repo]$ cat data_bags/credentials/mysql.json 
+{
+  "id": "mysql",
+  "comment": "MYSQL Server Credentials",
+  "username": "mysql_admin",
+  "password": "admin@123"
+}
+</pre>
+
+#### Let us add oracle db server credentials there
+Create a file oracle.json under Day4/chef-repo/data_bags/credentials folder
+```
+vim oracle.json
+```
+Append the below content in the file and save it.
+```
+{
+  "id": "oracle",
+  "comment": "Oracle Server Credentials",
+  "username": "oracle_admin",
+  "password": "pass@123"
+}
+```
+The expected output is
+<pre>
+[jegan@workstation chef-repo]$ vim data_bags/credentials/oracle.json 
+[jegan@workstation chef-repo]$ cat data_bags/credentials/oracle.json 
+{
+  "id": "oracle",
+  "comment": "Oracle Server Credentials",
+  "username": "oracle_admin",
+  "password": "pass@123"
+}
+</pre>
+
+#### Let us create the data bag
+Make sure the folder under data_bags and the name of your data bag you intend to create matches.
+```
+cd ~/Training/chef-sep-2021/Day4/chef-repo
+knife data bag create credentials
+```
+The expected output is
+<pre>
+[jegan@workstation chef-repo]$ knife data bag create credentials
+Created data_bag[credentials]
+</pre>
+
+You may verify the data bag is created successfully
+```
+knife data bag list
+```
+The expected output is
+<pre>
+[jegan@workstation chef-repo]$ knife data bag list
+<b>credentials</b>
+example
+[jegan@workstation chef-repo]$ 
+</pre>
+
+### Displaying databag items
+```
+[jegan@workstation chef-repo]$ knife search credentials "*:*"
+0 items found
+```
+As we are yet to add databag items in it, our credentials databag is empty.
+
+### Let us add mysql credentials into our databag
+```
+cd ~/Training/chef-sep-2021/Day4/chef-repo
+
+knife data bag from file credentials mysql.json
+```
+The expected output is
+<pre>
+[jegan@workstation chef-repo]$<b> knife data bag from file credentials mysql.json</b>
+Updated data_bag_item[credentials::mysql]
+</pre>
+
+### Let us add oracle credentials into our databag
+```
+cd ~/Training/chef-sep-2021/Day4/chef-repo
+
+knife data bag from file credentials oracle.json
+```
+The expected output is
+<pre>
+[jegan@workstation chef-repo]$<b> knife data bag from file credentials oracle.json</b>
+Updated data_bag_item[credentials::oracle]
+</pre>
+
+### Find how many items are there in our credentials databag now
+```
+cd ~/Trainig/chef-sep-2021/Day4/chef-repo
+knife search credentials "*:*"
+```
+The expected output is
+<pre>
+[jegan@workstation chef-repo]$ knife search credentials "*:*"
+2 items found
+
+chef_type: data_bag_item
+comment:   MYSQL Server Credentials
+data_bag:  credentials
+id:        mysql
+password:  admin@123
+username:  mysql_admin
+
+chef_type: data_bag_item
+comment:   Oracle Server Credentials
+data_bag:  credentials
+id:        oracle
+password:  pass@123
+username:  oracle_admin
+</pre>
+
+### Let us access the credentials of mysql and oracle db servers stored into our databag from cookbook
+```
+cd ~/Training/chef-sep-2021
+git pull
+cd Day4/chef-repo
+
+knife cookbook upload demo
+knife node run_list add node1 "recipe[demo]"
+knife ssh 'name:node1' 'sudo chef-client'
+```
+
+The expected output is
+<pre>
+[jegan@workstation chef-repo]$ knife cookbook upload demo
+Uploading demo           [0.1.0]
+Uploaded 1 cookbook.
+[jegan@workstation chef-repo]$ knife ssh 'name:node1' 'sudo chef-client'
+jegan@node1's password:
+node1 knife sudo password: 
+Enter your password:  
+node1 
+node1 Chef Infra Client, version 17.4.38
+node1 Patents: https://www.chef.io/patents
+node1 Infra Phase starting
+node1 Resolving cookbooks for run list: ["demo"]
+node1 Synchronizing cookbooks:
+node1   - demo (0.1.0)
+node1 Installing cookbook gem dependencies:
+node1 Compiling cookbooks...
+node1 Converging 3 resources
+node1 Recipe: demo::default
+node1   * execute[get-hostname] action run
+node1     - execute hostname
+node1   * log[name] action write
+node1   * template[/tmp/credentials.txt] action create
+node1     - update content in file /tmp/credentials.txt from 68fc22 to db4c52
+node1     --- /tmp/credentials.txt	2021-09-18 05:29:57.057261818 +0530
+node1     +++ /tmp/.chef-credentials20210918-9974-j1jsa8.txt	2021-09-18 06:01:52.183906898 +0530
+node1     @@ -1,6 +1,6 @@
+node1     -MySQL Username  ==> admin
+node1     +MySQL Username  ==> mysql_admin
+node1      MySQL Password  ==> admin@123
+node1      Oracle Username ==> oracle_admin
+node1     -Oracle Password ==> admin@123
+node1     +Oracle Password ==> pass@123
+node1      
+node1     - restore selinux security context
+node1 
+node1 Running handlers:
+node1 Running handlers complete
+node1 Infra Phase complete, 2/3 resources updated in 04 seconds
+[jegan@workstation chef-repo]$ 
+</pre>
