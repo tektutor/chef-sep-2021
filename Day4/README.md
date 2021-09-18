@@ -670,8 +670,24 @@ chef_version '>= 16.0'
 <b>depends 'apt', '~> 5.0'</b>
 </pre>
 
-### Uploading your cookbook with its dependencies
+It is time to perform berks install
+```
+cd ~/Training/chef-sep-2021/Day4/chef-repo/cookbooks/sample
 
+berks install
+```
+The expected output is
+<pre>
+[jegan@workstation demo]$ berks install
+Resolving cookbook dependencies...
+Fetching 'demo' from source at .
+Fetching cookbook index from https://supermarket.chef.io...
+Using apt (5.1.0)
+Using demo (1.0.0) from source at .
+Using compat_resource (12.19.1)
+</pre>
+
+### Uploading your cookbook to Chef Infra Server with its dependencies
 ```
 cd ~/Training/chef-sep-2021
 git pull
@@ -687,4 +703,55 @@ The expected output is
 Uploaded compat_resource (12.19.1) to: 'https://server:443/organizations/tektutor'
 Uploaded apt (5.1.0) to: 'https://server:443/organizations/tektutor'
 Uploaded demo (1.0.0) to: 'https://server:443/organizations/tektutor'
+</pre>
+
+### Running the cookbook in the node
+```
+cd ~/Training/chef-sep-2021/Day4/chef-repo
+knife node run_list add node1 "recipe[demo]"
+
+```
+
+The expected output is
+<pre>
+[jegan@workstation chef-repo]$ knife node run_list add node1 "recipe[demo]"
+node1:
+  run_list: recipe[demo]
+
+[jegan@workstation chef-repo]$ knife ssh 'name:node1' 'sudo chef-client'
+jegan@node1's password:
+node1 knife sudo password: 
+Enter your password:  
+node1 
+node1 Chef Infra Client, version 17.4.38
+node1 Patents: https://www.chef.io/patents
+node1 Infra Phase starting
+node1 Resolving cookbooks for run list: ["demo"]
+node1 <b>Synchronizing cookbooks:
+node1   - compat_resource (12.19.1)
+node1   - demo (1.0.0)
+node1   - apt (5.1.0)</b>
+node1 Installing cookbook gem dependencies:
+node1 Compiling cookbooks...
+node1 [2021-09-18T07:59:33+05:30] WARN: Resource apt_preference built into Chef Infra Client is being overridden by the resource from a cookbook. Please upgrade your cookbook or remove the cookbook from your run_list.
+node1 [2021-09-18T07:59:33+05:30] WARN: Resource apt_repository built into Chef Infra Client is being overridden by the resource from a cookbook. Please upgrade your cookbook or remove the cookbook from your run_list.
+node1 Converging 3 resources
+node1 Recipe: demo::default
+node1   * execute[get-hostname] action run
+node1     - execute hostname
+node1   * log[name] action write
+node1   * template[/tmp/credentials.txt] action create (up to date)
+node1 
+node1 Running handlers:
+node1 Running handlers complete
+node1 
+node1 Deprecation warnings that must be addressed before upgrading to Chef Infra 18:
+node1 
+node1   The  resource in the apt cookbook should declare `unified_mode true` at 2 locations:
+node1     - /var/chef/cache/cookbooks/apt/resources/preference.rb
+node1     - /var/chef/cache/cookbooks/apt/resources/repository.rb
+node1    See https://docs.chef.io/deprecations_unified_mode/ for further details.
+node1 
+node1 Infra Phase complete, 1/3 resources updated in 05 seconds
+[jegan@workstation chef-repo]$ 
 </pre>
