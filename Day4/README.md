@@ -29,7 +29,7 @@ knife environment create DEV
 ```
 The expected output is
 <pre>
-[jegan@workstation Day4]$ knife environment create DEV
+[jegan@workstation Day4]$ <b>knife environment create DEV</b>
 Created DEV
 </pre>
 
@@ -39,7 +39,7 @@ knife environment create QA
 ```
 The expected output is
 <pre>
-[jegan@workstation Day4]$ knife environment create QA
+[jegan@workstation Day4]$ <b>knife environment create QA</b>
 Created QA
 </pre>
 
@@ -49,7 +49,7 @@ knife environment create PROD
 ```
 The expected output is
 <pre>
-[jegan@workstation Day4]$ knife environment create PROD
+[jegan@workstation Day4]$<b> knife environment create PROD</b>
 Created PROD
 </pre>
 
@@ -60,7 +60,7 @@ knife node edit node1
 Update environment from _default to PROD.
 The expected output is
 <pre>
-[jegan@workstation Day4]$ knife node edit node1
+[jegan@workstation Day4]$ <b>knife node edit node1</b>
 Saving updated chef_environment on node node1
 </pre>
 
@@ -71,7 +71,7 @@ knife node edit node2
 Update environment from _default to PROD.
 The expected output is
 <pre>
-[jegan@workstation Day4]$ knife node edit node2
+[jegan@workstation Day4]$<b> knife node edit node2</b>
 Saving updated chef_environment on node node2
 </pre>
 
@@ -82,7 +82,7 @@ knife node edit node3
 Update environment from _default to QA.
 The expected output is
 <pre>
-[jegan@workstation Day4]$ knife node edit node3
+[jegan@workstation Day4]$ <b>knife node edit node3</b>
 Saving updated chef_environment on node node3
 </pre>
 
@@ -93,7 +93,7 @@ knife node edit node4
 Update environment from _default to QA.
 The expected output is
 <pre>
-[jegan@workstation Day4]$ knife node edit node4
+[jegan@workstation Day4]$<b> knife node edit node4</b>
 Saving updated chef_environment on node node4
 </pre>
 
@@ -104,7 +104,7 @@ knife node edit node5
 Update environment from _default to DEV.
 The expected output is
 <pre>
-[jegan@workstation Day4]$ knife node edit node5
+[jegan@workstation Day4]$ <b>knife node edit node5</b>
 Saving updated chef_environment on node node5
 </pre>
 
@@ -115,7 +115,7 @@ knife node edit node6
 Update environment from _default to DEV.
 The expected output is
 <pre>
-[jegan@workstation Day4]$ knife node edit node6
+[jegan@workstation Day4]$<b> knife node edit node6</b>
 Saving updated chef_environment on node node6
 </pre>
 
