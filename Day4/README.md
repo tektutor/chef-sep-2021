@@ -709,16 +709,16 @@ Uploaded demo (1.0.0) to: 'https://server:443/organizations/tektutor'
 ```
 cd ~/Training/chef-sep-2021/Day4/chef-repo
 knife node run_list add node1 "recipe[demo]"
-
+knife ssh 'name:node1' 'sudo chef-client'
 ```
 
 The expected output is
 <pre>
-[jegan@workstation chef-repo]$ knife node run_list add node1 "recipe[demo]"
+[jegan@workstation chef-repo]$<b> knife node run_list add node1 "recipe[demo]"</b>
 node1:
   run_list: recipe[demo]
 
-[jegan@workstation chef-repo]$ knife ssh 'name:node1' 'sudo chef-client'
+[jegan@workstation chef-repo]$ <b>knife ssh 'name:node1' 'sudo chef-client'</b>
 jegan@node1's password:
 node1 knife sudo password: 
 Enter your password:  
