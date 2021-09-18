@@ -635,3 +635,22 @@ node1 Infra Phase complete, 2/3 resources updated in 04 seconds
 - when chef-client is executed on the Nodes, the chef-client will refer the metadata.rb file to understand 
   the dependencies of your cookbook so that they also will be downloaded from the Chef Infra Server to the node 
   before executing your cookbook.
+
+### Uploading your cookbook with its dependencies
+
+```
+cd ~/Training/chef-sep-2021
+git pull
+
+cd Day4/chef-repo
+
+berks upload -b cookbooks/demo/Berksfile --no-ssl-verify
+```
+
+The expected output is
+<pre>
+[jegan@workstation chef-repo]$ berks upload -b cookbooks/demo/Berksfile --no-ssl-verify
+Uploaded compat_resource (12.19.1) to: 'https://server:443/organizations/tektutor'
+Uploaded apt (5.1.0) to: 'https://server:443/organizations/tektutor'
+Uploaded demo (1.0.0) to: 'https://server:443/organizations/tektutor'
+</pre>
