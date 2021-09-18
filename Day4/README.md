@@ -526,6 +526,49 @@ password:  pass@123
 username:  oracle_admin
 </pre>
 
+
+### Let us access mysql credential stored into our databag using knife
+```
+cd ~/Training/chef-sep-2021
+git pull
+cd Day4/chef-repo
+
+knife search credentials "id:mysql"
+```
+The expected output is
+<pre>
+jegan@workstation chef-sep-2021]$<b> knife search credentials "id:mysql"</b>
+1 items found
+
+chef_type: data_bag_item
+comment:   MYSQL Server Credentials
+data_bag:  credentials
+id:        mysql
+password:  admin@123
+username:  mysql_admin
+</pre>
+
+### Let us access oracle credential stored into our databag using knife
+```
+cd ~/Training/chef-sep-2021
+git pull
+cd Day4/chef-repo
+
+knife search credentials "id:oracle"
+```
+The expected output is
+<pre>
+[jegan@workstation chef-sep-2021]$ knife search credentials "id:oracle"
+1 items found
+
+chef_type: data_bag_item
+comment:   Oracle Server Credentials
+data_bag:  credentials
+id:        oracle
+password:  pass@123
+username:  oracle_admin
+</pre>
+
 ### Let us access the credentials of mysql and oracle db servers stored into our databag from cookbook
 ```
 cd ~/Training/chef-sep-2021
