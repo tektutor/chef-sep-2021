@@ -1,4 +1,3 @@
 # demo
 
-TODO: Enter the cookbook description here.
-
+This cookbook demonstrates accessing data from databag.
