@@ -623,13 +623,13 @@ node1 Infra Phase complete, 2/3 resources updated in 04 seconds
 [jegan@workstation chef-repo]$ 
 </pre>
 
-### Berks
+### Berkshelf
 - is a Cookbook Dependency Management tool.
 - it uses Berksfile to manage your cookbook dependencies. 
-- let's say, your cookbook depends on some cookbook from Chef Supermarket, this berks tools helps you download
+- let's say, your cookbook depends on some cookbook from Chef Supermarket, Berkshelf tool helps you download
   your dependent cookbook automatically based on Berksfile.
 - you need to update your cookbook dependencies in Berksfile and metadata.rb files.
-- when you upload your cookbook to Chef Server via berks tool, it refers the Berksfile to get the 
+- when you upload your cookbook to Chef Server via berks(Berkshell) tool, it refers the Berksfile to get the 
   dependencies of your cookbook. It then uploads your cookbook along with its dependent cookbooks. 
   In case your dependent cookbooks in turn has further dependencies even they will get downloaded automatically.
 - when chef-client is executed on the Nodes, the chef-client will refer the metadata.rb file to understand 
