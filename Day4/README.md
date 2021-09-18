@@ -633,5 +633,5 @@ node1 Infra Phase complete, 2/3 resources updated in 04 seconds
   dependencies of your cookbook. It then uploads your cookbook along with its dependent cookbooks. 
   In case your dependent cookbooks in turn has further dependencies even they will get downloaded automatically.
 - when chef-client is executed on the Nodes, the chef-client will refer the metadata.rb file to understand 
-  the dependencies of your cookbook so that they also will be download from the Chef Infra Server to the node 
+  the dependencies of your cookbook so that they also will be downloaded from the Chef Infra Server to the node 
   before executing your cookbook.
